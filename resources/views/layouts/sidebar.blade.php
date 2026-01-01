@@ -96,8 +96,8 @@
     <!-- Footer -->
     <div class="p-4 border-t">
         <div class="bg-emerald-50 rounded-xl p-4">
-            <p class="text-sm font-bold text-gray-800">Admin User</p>
-            <p class="text-xs text-gray-600 mb-3">Administrator</p>
+            <p class="text-sm font-bold text-gray-800">{{ Auth::user()->name ?? 'Admin User' }}</p>
+            <p class="text-xs text-gray-600 mb-3">{{ Auth::user()->role ?? 'Administrator' }}</p>
             <button
                 class="w-full bg-white border text-emerald-700 py-2 rounded-lg hover:bg-emerald-100">
                 Logout

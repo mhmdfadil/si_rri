@@ -46,13 +46,23 @@
 
         <!-- User Profile -->
         <div class="hidden lg:flex items-center gap-2 pl-3 border-l border-gray-300">
-            <div class="w-9 h-9 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                {{ strtoupper(substr(Auth::user()->name ?? 'AD', 0, 2)) }}
+            <div class="w-9 h-9 rounded-full overflow-hidden bg-gray-200">
+                <img 
+                    src="{{ Auth::user()?->photo_url }}"
+                    alt="User Avatar"
+                    class="w-full h-full object-cover"
+                >
             </div>
+
             <div class="hidden xl:block">
-                <p class="text-sm font-bold text-gray-800 leading-tight">{{ Auth::user()->name ?? 'Admin User' }}</p>
-                <p class="text-xs text-gray-600">{{ Auth::user()->role ?? 'Administrator' }}</p>
+                <p class="text-sm font-bold text-gray-800 leading-tight">
+                    {{ Auth::user()?->name ?? 'Admin User' }}
+                </p>
+                <p class="text-xs text-gray-600">
+                    {{ Auth::user()?->role ?? 'Administrator' }}
+                </p>
             </div>
         </div>
+
     </div>
 </header>
