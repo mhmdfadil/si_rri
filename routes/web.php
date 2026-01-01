@@ -23,7 +23,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('pages.dashboard');
     })->name('dashboard');
     
     // Logout
