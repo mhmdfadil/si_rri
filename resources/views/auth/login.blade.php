@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Login Admin - RRI Lhokseumawe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -189,8 +190,13 @@
                     <p class="text-gray-600 text-base">Masuk sebagai Administrator</p>
                 </div>
 
+                <!-- Alert Messages -->
+                <div id="alert-container"></div>
+
                 <!-- Login Form -->
-                <form class="space-y-6">
+                <form id="loginForm" class="space-y-6">
+                    @csrf
+                    
                     <!-- Email/Username Input -->
                     <div class="space-y-2">
                         <label for="email" class="block text-sm font-bold text-gray-700">
@@ -261,14 +267,18 @@
 
                     <!-- Login Button -->
                     <button
-                        type="button"
-                        onclick="handleLogin()"
+                        type="submit"
+                        id="loginButton"
                         class="w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white py-4 px-6 rounded-xl font-bold text-base shadow-xl hover:shadow-2xl hover:from-emerald-600 hover:via-teal-600 hover:to-emerald-700 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 relative overflow-hidden group"
                     >
                         <span class="relative z-10 flex items-center justify-center gap-2">
-                            Masuk ke Dashboard
-                            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <span id="buttonText">Masuk ke Dashboard</span>
+                            <svg id="buttonIcon" class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                            <svg id="loadingIcon" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
                         </span>
                         <div class="absolute inset-0 shimmer"></div>
@@ -287,6 +297,7 @@
     </div>
 
     <script>
+        // Toggle password visibility
         function togglePassword() {
             const passwordInput = document.getElementById('password');
             const eyeIcon = document.getElementById('eye-icon');
@@ -303,18 +314,89 @@
             }
         }
 
-        function handleLogin() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        // Show alert message
+        function showAlert(message, type = 'error') {
+            const alertContainer = document.getElementById('alert-container');
+            const bgColor = type === 'success' ? 'bg-emerald-50 border-emerald-500 text-emerald-800' : 'bg-red-50 border-red-500 text-red-800';
+            const icon = type === 'success' 
+                ? '<svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+                : '<svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
             
-            if (!email || !password) {
-                alert('Mohon lengkapi email/username dan password');
-                return;
-            }
+            alertContainer.innerHTML = `
+                <div class="${bgColor} border-l-4 p-4 rounded-lg mb-6 animate-pulse">
+                    <div class="flex items-center">
+                        ${icon}
+                        <p class="ml-3 text-sm font-medium">${message}</p>
+                    </div>
+                </div>
+            `;
             
-            // Di Laravel Blade, ini akan diganti dengan form submission
-            alert(`Login Admin\nEmail: ${email}\n\nFungsi login akan diimplementasikan dengan Laravel`);
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                alertContainer.innerHTML = '';
+            }, 5000);
         }
+
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const loginButton = document.getElementById('loginButton');
+            const buttonText = document.getElementById('buttonText');
+            const buttonIcon = document.getElementById('buttonIcon');
+            const loadingIcon = document.getElementById('loadingIcon');
+            const alertContainer = document.getElementById('alert-container');
+            
+            // Clear previous alerts
+            alertContainer.innerHTML = '';
+            
+            // Disable button and show loading
+            loginButton.disabled = true;
+            buttonText.textContent = 'Memproses...';
+            buttonIcon.classList.add('hidden');
+            loadingIcon.classList.remove('hidden');
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('{{ route("login.submit") }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Accept': 'application/json',
+                    },
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAlert(data.message, 'success');
+                    
+                    // Redirect after 1 second
+                    setTimeout(() => {
+                        window.location.href = data.redirect;
+                    }, 1000);
+                } else {
+                    showAlert(data.message, 'error');
+                    
+                    // Re-enable button
+                    loginButton.disabled = false;
+                    buttonText.textContent = 'Masuk ke Dashboard';
+                    buttonIcon.classList.remove('hidden');
+                    loadingIcon.classList.add('hidden');
+                }
+            } catch (error) {
+                showAlert('Terjadi kesalahan. Silakan coba lagi.', 'error');
+                
+                // Re-enable button
+                loginButton.disabled = false;
+                buttonText.textContent = 'Masuk ke Dashboard';
+                buttonIcon.classList.remove('hidden');
+                loadingIcon.classList.add('hidden');
+            }
+        });
     </script>
 </body>
 </html>
