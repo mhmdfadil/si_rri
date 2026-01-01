@@ -360,7 +360,7 @@
             const formData = new FormData(this);
             
             try {
-                const response = await fetch('{{ route("login.submit") }}', {
+                const response = await fetch('{{ route("login.post") }}', {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
