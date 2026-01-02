@@ -13,11 +13,21 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create admin user
+        // Admin
         User::create([
             'name' => 'Administrator',
             'username' => 'admin',
-            'email' => 'admin@unimal.ac.id',
+            'email' => 'admin@rri.id',
+            'password' => Hash::make('12345678'),
+            'is_active' => true,
+            'last_login_at' => now(),
+        ]);
+
+        // RRI Lhokseumawe
+        User::create([
+            'name' => 'RRI Lhokseumawe',
+            'username' => 'rrilhokseumawe',
+            'email' => 'rrilhokseumawe@gmail.com',
             'password' => Hash::make('12345678'),
             'is_active' => true,
             'last_login_at' => now(),
