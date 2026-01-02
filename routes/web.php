@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NarasumberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,19 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy');
         Route::patch('/{user}/toggle-status', [UserController::class, 'toggleStatus'])->name('toggle-status');
         Route::delete('/{user}/photo', [UserController::class, 'deletePhoto'])->name('photo.delete');
+    });
+
+    // Narasumber
+    Route::prefix('narasumber')->name('narasumber.')->group(function () {
+        Route::get('/', [NarasumberController::class, 'index'])->name('index');
+        Route::get('/create', [NarasumberController::class, 'create'])->name('create');
+        Route::post('/', [NarasumberController::class, 'store'])->name('store');
+        Route::get('/{narasumber}', [NarasumberController::class, 'show'])->name('show');
+        Route::get('/{narasumber}/edit', [NarasumberController::class, 'edit'])->name('edit');
+        Route::put('/{narasumber}', [NarasumberController::class, 'update'])->name('update');
+        Route::delete('/{narasumber}', [NarasumberController::class, 'destroy'])->name('destroy');
+        Route::delete('/{narasumber}/photo', [NarasumberController::class, 'deletePhoto'])->name('photo.delete');
+        Route::get('/export', [NarasumberController::class, 'export'])->name('export');
     });
     
     // Logout
