@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NarasumberController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,11 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{narasumber}/photo', [NarasumberController::class, 'deletePhoto'])->name('photo.delete');
         Route::get('/export', [NarasumberController::class, 'export'])->name('export');
     });
+
+    // Kategori 
+    Route::resource('kategori', KategoriController::class);
+    Route::post('kategori/{kategori}/toggle-status', [KategoriController::class, 'toggleStatus'])
+        ->name('kategori.toggle-status');
     
     // Logout
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
