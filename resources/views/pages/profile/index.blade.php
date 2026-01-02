@@ -9,18 +9,18 @@
     
     <!-- Success Message -->
     @if(session('success'))
-    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-6 rounded-lg">
+    <div class="bg-emerald-50 dark:bg-emerald-900/30 border-l-4 border-emerald-500 dark:border-emerald-400 p-4 mb-6 rounded-lg">
         <div class="flex items-center">
-            <svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-emerald-500 dark:text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <p class="text-emerald-700 font-medium">{{ session('success') }}</p>
+            <p class="text-emerald-700 dark:text-emerald-300 font-medium">{{ session('success') }}</p>
         </div>
     </div>
     @endif
 
     <!-- Profile Information Card -->
-    <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden mb-6">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden mb-6 transition-colors">
         
         <!-- Card Header -->
         <div class="bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-4">
@@ -45,7 +45,7 @@
                     <div class="lg:col-span-1">
                         <div class="text-center">
                             <div class="relative inline-block">
-                                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg">
+                                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-emerald-100 dark:border-emerald-900 shadow-lg">
                                     @if($user->photos)
                                         <img id="photoPreview" src="{{ $user->photo_url }}" alt="Profile Photo" class="w-full h-full object-cover">
                                     @else
@@ -64,7 +64,7 @@
                             </div>
                             
                             <div class="mt-4">
-                                <label for="photos" class="cursor-pointer inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-lg hover:bg-emerald-100 transition-colors font-medium text-sm">
+                                <label for="photos" class="cursor-pointer inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-lg hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors font-medium text-sm">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -72,9 +72,9 @@
                                     Pilih Foto
                                 </label>
                                 <input type="file" id="photos" name="photos" class="hidden" accept="image/*" onchange="previewPhoto(event)">
-                                <p class="text-xs text-gray-500 mt-2">JPG, PNG, GIF (Max. 2MB)</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">JPG, PNG, GIF (Max. 2MB)</p>
                                 @error('photos')
-                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                    <p class="text-red-500 dark:text-red-400 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         
                         <!-- Name -->
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 Nama Lengkap <span class="text-red-500">*</span>
                             </label>
                             <input 
@@ -93,17 +93,17 @@
                                 id="name" 
                                 name="name" 
                                 value="{{ old('name', $user->name) }}"
-                                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all outline-none @error('name') border-red-500 @enderror"
+                                class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-emerald-500 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 dark:focus:ring-emerald-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 @error('name') border-red-500 @enderror"
                                 required
                             >
                             @error('name')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                <p class="text-red-500 dark:text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <!-- Username -->
                         <div>
-                            <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 Username <span class="text-red-500">*</span>
                             </label>
                             <input 
@@ -111,17 +111,17 @@
                                 id="username" 
                                 name="username" 
                                 value="{{ old('username', $user->username) }}"
-                                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all outline-none @error('username') border-red-500 @enderror"
+                                class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-emerald-500 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 dark:focus:ring-emerald-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 @error('username') border-red-500 @enderror"
                                 required
                             >
                             @error('username')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                <p class="text-red-500 dark:text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <!-- Email -->
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 Email <span class="text-red-500">*</span>
                             </label>
                             <input 
@@ -129,20 +129,20 @@
                                 id="email" 
                                 name="email" 
                                 value="{{ old('email', $user->email) }}"
-                                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all outline-none @error('email') border-red-500 @enderror"
+                                class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-emerald-500 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 dark:focus:ring-emerald-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 @error('email') border-red-500 @enderror"
                                 required
                             >
                             @error('email')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                <p class="text-red-500 dark:text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <!-- Account Info -->
-                        <div class="bg-gray-50 rounded-lg p-4 mt-4">
+                        <div class="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 mt-4 border border-gray-200 dark:border-gray-600">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                 <div>
-                                    <p class="text-gray-600">Status Akun</p>
-                                    <p class="font-medium text-gray-800 flex items-center gap-2 mt-1">
+                                    <p class="text-gray-600 dark:text-gray-400">Status Akun</p>
+                                    <p class="font-medium text-gray-800 dark:text-gray-200 flex items-center gap-2 mt-1">
                                         @if($user->is_active)
                                             <span class="w-2 h-2 bg-green-500 rounded-full"></span>
                                             Aktif
@@ -153,8 +153,8 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <p class="text-gray-600">Login Terakhir</p>
-                                    <p class="font-medium text-gray-800 mt-1">
+                                    <p class="text-gray-600 dark:text-gray-400">Login Terakhir</p>
+                                    <p class="font-medium text-gray-800 dark:text-gray-200 mt-1">
                                         {{ $user->last_login_at ? $user->last_login_at->format('d M Y, H:i') : 'Belum pernah login' }}
                                     </p>
                                 </div>
@@ -180,7 +180,7 @@
     </div>
 
     <!-- Change Password Card -->
-    <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors">
         
         <!-- Card Header -->
         <div class="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4">
@@ -203,7 +203,7 @@
                     
                     <!-- Current Password -->
                     <div>
-                        <label for="current_password" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="current_password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Password Saat Ini <span class="text-red-500">*</span>
                         </label>
                         <div class="relative">
@@ -211,10 +211,10 @@
                                 type="password" 
                                 id="current_password" 
                                 name="current_password" 
-                                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-100 transition-all outline-none @error('current_password') border-red-500 @enderror"
+                                class="w-full px-4 py-2.5 pr-12 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 @error('current_password') border-red-500 @enderror"
                                 required
                             >
-                            <button type="button" onclick="togglePassword('current_password')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700">
+                            <button type="button" onclick="togglePassword('current_password')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -222,13 +222,13 @@
                             </button>
                         </div>
                         @error('current_password')
-                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            <p class="text-red-500 dark:text-red-400 text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <!-- New Password -->
                     <div>
-                        <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Password Baru <span class="text-red-500">*</span>
                         </label>
                         <div class="relative">
@@ -236,11 +236,11 @@
                                 type="password" 
                                 id="password" 
                                 name="password" 
-                                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-100 transition-all outline-none @error('password') border-red-500 @enderror"
+                                class="w-full px-4 py-2.5 pr-12 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 @error('password') border-red-500 @enderror"
                                 required
                                 oninput="checkPasswordStrength(this.value)"
                             >
-                            <button type="button" onclick="togglePassword('password')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700">
+                            <button type="button" onclick="togglePassword('password')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -248,32 +248,32 @@
                             </button>
                         </div>
                         @error('password')
-                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            <p class="text-red-500 dark:text-red-400 text-xs mt-1">{{ $message }}</p>
                         @enderror
                         
                         <!-- Password Strength Criteria -->
-                        <div class="mt-3 bg-gray-50 rounded-lg p-3 border border-gray-200">
-                            <p class="text-xs font-semibold text-gray-700 mb-2">Kriteria Password:</p>
+                        <div class="mt-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
+                            <p class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">Kriteria Password:</p>
                             <ul class="space-y-1.5">
-                                <li id="length-check" class="flex items-center gap-2 text-xs text-gray-500 transition-colors">
+                                <li id="length-check" class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 transition-colors">
                                     <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
                                     </svg>
                                     <span>Minimal 8 karakter</span>
                                 </li>
-                                <li id="uppercase-check" class="flex items-center gap-2 text-xs text-gray-500 transition-colors">
+                                <li id="uppercase-check" class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 transition-colors">
                                     <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
                                     </svg>
                                     <span>Minimal 1 huruf besar (A-Z)</span>
                                 </li>
-                                <li id="lowercase-check" class="flex items-center gap-2 text-xs text-gray-500 transition-colors">
+                                <li id="lowercase-check" class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 transition-colors">
                                     <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
                                     </svg>
                                     <span>Minimal 1 huruf kecil (a-z)</span>
                                 </li>
-                                <li id="symbol-check" class="flex items-center gap-2 text-xs text-gray-500 transition-colors">
+                                <li id="symbol-check" class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 transition-colors">
                                     <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
                                     </svg>
@@ -284,11 +284,11 @@
                             <!-- Password Strength Bar -->
                             <div class="mt-3">
                                 <div class="flex items-center gap-2 mb-1">
-                                    <span class="text-xs font-medium text-gray-600">Kekuatan:</span>
-                                    <span id="strength-text" class="text-xs font-semibold text-gray-400">-</span>
+                                    <span class="text-xs font-medium text-gray-600 dark:text-gray-400">Kekuatan:</span>
+                                    <span id="strength-text" class="text-xs font-semibold text-gray-400 dark:text-gray-500">-</span>
                                 </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                                    <div id="strength-bar" class="h-full bg-gray-300 transition-all duration-300 rounded-full" style="width: 0%"></div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 overflow-hidden">
+                                    <div id="strength-bar" class="h-full bg-gray-300 dark:bg-gray-500 transition-all duration-300 rounded-full" style="width: 0%"></div>
                                 </div>
                             </div>
                         </div>
@@ -296,7 +296,7 @@
 
                     <!-- Confirm Password -->
                     <div>
-                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Konfirmasi Password Baru <span class="text-red-500">*</span>
                         </label>
                         <div class="relative">
@@ -304,11 +304,11 @@
                                 type="password" 
                                 id="password_confirmation" 
                                 name="password_confirmation" 
-                                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-100 transition-all outline-none"
+                                class="w-full px-4 py-2.5 pr-12 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
                                 required
                                 oninput="checkPasswordMatch()"
                             >
-                            <button type="button" onclick="togglePassword('password_confirmation')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700">
+                            <button type="button" onclick="togglePassword('password_confirmation')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -421,9 +421,9 @@
         strengthBar.style.width = percentage + '%';
 
         if (strength === 0) {
-            strengthBar.className = 'h-full bg-gray-300 transition-all duration-300 rounded-full';
+            strengthBar.className = 'h-full bg-gray-300 dark:bg-gray-500 transition-all duration-300 rounded-full';
             strengthText.textContent = '-';
-            strengthText.className = 'text-xs font-semibold text-gray-400';
+            strengthText.className = 'text-xs font-semibold text-gray-400 dark:text-gray-500';
         } else if (strength === 1) {
             strengthBar.className = 'h-full bg-red-500 transition-all duration-300 rounded-full';
             strengthText.textContent = 'Lemah';
@@ -452,13 +452,13 @@
         const span = element.querySelector('span');
 
         if (isValid) {
-            element.className = 'flex items-center gap-2 text-xs text-green-600 transition-colors';
+            element.className = 'flex items-center gap-2 text-xs text-green-600 dark:text-green-500 transition-colors';
             svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
-            svg.classList.add('text-green-600');
+            svg.classList.add('text-green-600', 'dark:text-green-500');
         } else {
-            element.className = 'flex items-center gap-2 text-xs text-gray-500 transition-colors';
+            element.className = 'flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 transition-colors';
             svg.innerHTML = '<circle cx="12" cy="12" r="10" stroke-width="2"></circle>';
-            svg.classList.remove('text-green-600');
+            svg.classList.remove('text-green-600', 'dark:text-green-500');
         }
     }
 
@@ -476,11 +476,11 @@
 
         if (password === confirmation) {
             message.textContent = '✓ Password cocok';
-            message.className = 'text-xs mt-1 text-green-600';
+            message.className = 'text-xs mt-1 text-green-600 dark:text-green-500';
             message.classList.remove('hidden');
         } else {
             message.textContent = '✗ Password tidak cocok';
-            message.className = 'text-xs mt-1 text-red-500';
+            message.className = 'text-xs mt-1 text-red-500 dark:text-red-400';
             message.classList.remove('hidden');
         }
 
