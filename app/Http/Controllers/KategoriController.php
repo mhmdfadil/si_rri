@@ -151,23 +151,27 @@ class KategoriController extends Controller
     }
 
     /**
-     * Generate kode kategori otomatis
+     * Generate kode kategori otomatis dengan format KAT-YYYY-NNNN
      */
     private function generateKodeKategori()
     {
-        // Get last kategori
+        $year = date('Y');
+        $prefix = 'KAT' . $year;
+
+        // Get last kategori for current year
         $lastKategori = Kategori::withTrashed()
+            ->where('kode_kategori', 'LIKE', $prefix . '%')
             ->orderBy('kode_kategori', 'desc')
             ->first();
 
         if (!$lastKategori) {
-            return 'KAT-00001';
+            return $prefix . '0001';
         }
 
-        // Extract number from last kode
-        $lastNumber = (int) substr($lastKategori->kode_kategori, 4);
+        // Extract number from last kode (last 4 digits)
+        $lastNumber = (int) substr($lastKategori->kode_kategori, -4);
         $newNumber = $lastNumber + 1;
 
-        return 'KAT-' . str_pad($newNumber, 5, '0', STR_PAD_LEFT);
+        return $prefix . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
     }
 }

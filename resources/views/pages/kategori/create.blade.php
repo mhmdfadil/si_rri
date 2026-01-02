@@ -41,7 +41,7 @@
                         </svg>
                         <div>
                             <p class="text-sm text-blue-700 font-medium">Kode kategori akan digenerate otomatis</p>
-                            <p class="text-xs text-blue-600 mt-1">Format: KAT-00001, KAT-00002, dst.</p>
+                            <p class="text-xs text-blue-600 mt-1">Format: KAT20260001, KAT20260002, dst.</p>
                         </div>
                     </div>
                 </div>
