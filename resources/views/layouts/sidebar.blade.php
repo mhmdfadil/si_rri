@@ -25,86 +25,116 @@
     <!-- Menu -->
     <nav class="flex-1 overflow-y-auto p-4 space-y-1">
 
-        <!-- Item -->
+        <!-- Dashboard -->
         <a href="{{ route('dashboard') }}"
             class="flex items-center gap-3 px-4 py-3
                     {{ request()->routeIs('dashboard')
                         ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500'
                         : 'text-gray-700 hover:bg-emerald-50' }}
                     rounded-xl font-medium transition-all group">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3" />
-                </svg>
-                <span>Dashboard</span>
-            </a>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3" />
+            </svg>
+            <span>Dashboard</span>
+        </a>
 
+        <!-- Data Narasumber -->
         <a href="{{ route('narasumber.index') }}"
             class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
                    {{ request()->routeIs('narasumber.*')
                         ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500'
                         : 'text-gray-700 hover:bg-emerald-50' }} transition-all group">
-            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 4a4 4 0 100 8 4 4 0 000-8zM4 20a8 8 0 0116 0" />
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
             <span>Data Narasumber</span>
         </a>
 
+        <!-- Kategori -->
         <a href="#"
             class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
                    text-gray-700 hover:bg-emerald-50 transition-all">
-            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12h6m-6 4h6" />
+                    d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
             </svg>
-            <span>Konten Siaran</span>
+            <span>Kategori</span>
         </a>
 
+        <!-- Program Siaran -->
         <a href="#"
             class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
                    text-gray-700 hover:bg-emerald-50 transition-all">
-            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 8v4l3 3" />
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
             <span>Program Siaran</span>
         </a>
 
-        <div class="border-t my-3"></div>
-
+        <!-- Konten Siaran -->
         <a href="#"
             class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
                    text-gray-700 hover:bg-emerald-50 transition-all">
-            <span>Kategori</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+            <span>Konten Siaran</span>
         </a>
 
+        <div class="border-t my-3"></div>
+
+        <!-- Laporan -->
         <a href="#"
             class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
                    text-gray-700 hover:bg-emerald-50 transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
             <span>Laporan</span>
         </a>
 
         <div class="border-t my-3"></div>
 
-         <a href="{{ route('users.index') }}"
+        <!-- Pengguna -->
+        <a href="{{ route('users.index') }}"
             class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('users.*')
                         ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500'
                         : 'text-gray-700 hover:bg-emerald-50' }} rounded-xl font-medium transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
             <span>Pengguna</span>
         </a>
 
+        <!-- Profile Saya -->
         <a href="{{ route('profile.index') }}"
             class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('profile.*')
                         ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500'
                         : 'text-gray-700 hover:bg-emerald-50' }} rounded-xl font-medium transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
             <span>Profile Saya</span>
         </a>
 
+        <!-- Pengaturan -->
         <a href="#"
             class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
                    text-gray-700 hover:bg-emerald-50 transition-all">
-            <span>Pengaturan</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Pengaturan Sistem</span>
         </a>
 
     </nav>
