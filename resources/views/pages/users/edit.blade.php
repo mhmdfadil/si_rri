@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Edit User')
-@section('page-title', 'Edit User')
-@section('page-subtitle', 'Ubah informasi user')
+@section('title', 'Edit Pengguna')
+@section('page-title', 'Edit Pengguna')
+@section('page-subtitle', 'Ubah informasi pengguna')
 
 @section('content')
-<div class="max-w-4xl mx-auto">
+<div class="max-w-full mx-auto">
     
     <!-- Back Button -->
     <div class="mb-6">
@@ -16,7 +16,7 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
-            Kembali ke Daftar User
+            Kembali ke Daftar Pengguna
         </a>
     </div>
 
@@ -29,9 +29,9 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                 </svg>
-                Form Edit User
+                Form Edit Pengguna
             </h2>
-            <p class="text-emerald-50 text-sm mt-1">Perbarui informasi user</p>
+            <p class="text-emerald-50 text-sm mt-1">Perbarui informasi pengguna</p>
         </div>
 
         <!-- Card Body -->
@@ -45,36 +45,58 @@
                     <!-- Photo Section -->
                     <div class="lg:col-span-1">
                         <label class="block text-sm font-medium text-gray-700 mb-3">Foto Profile</label>
+
                         <div class="text-center">
                             <div class="relative inline-block">
                                 <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg">
-                                    @if($user->photos)
-                                        <img id="photoPreview" src="{{ $user->photo_url }}" alt="Profile Photo" class="w-full h-full object-cover">
-                                    @else
-                                        <div id="photoPreview" class="w-full h-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white text-4xl font-bold">
-                                            {{ strtoupper(substr($user->name, 0, 2)) }}
-                                        </div>
-                                    @endif
+                                    <img
+                                        id="photoPreview"
+                                        src="{{ $user->photo_url }}"
+                                        alt="Profile Photo"
+                                        class="w-full h-full object-cover"
+                                    >
                                 </div>
+
                                 @if($user->photos)
-                                <button type="button" onclick="deletePhoto()" class="absolute bottom-0 right-0 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors shadow-lg">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                    </svg>
-                                </button>
+                                    <button
+                                        type="button"
+                                        onclick="deletePhoto()"
+                                        class="absolute bottom-0 right-0 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors shadow-lg"
+                                    >
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                            </path>
+                                        </svg>
+                                    </button>
                                 @endif
                             </div>
-                            
+
                             <div class="mt-4">
-                                <label for="photos" class="cursor-pointer inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-lg hover:bg-emerald-100 transition-colors font-medium text-sm">
+                                <label for="photos"
+                                    class="cursor-pointer inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-lg hover:bg-emerald-100 transition-colors font-medium text-sm">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z">
+                                        </path>
                                     </svg>
                                     Ubah Foto
                                 </label>
-                                <input type="file" id="photos" name="photos" class="hidden" accept="image/*" onchange="previewPhoto(event)">
+
+                                <input
+                                    type="file"
+                                    id="photos"
+                                    name="photos"
+                                    class="hidden"
+                                    accept="image/*"
+                                    onchange="previewPhoto(event)"
+                                >
+
                                 <p class="text-xs text-gray-500 mt-2">JPG, PNG, GIF (Max. 2MB)</p>
+
                                 @error('photos')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
@@ -191,7 +213,7 @@
                                 class="w-5 h-5 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2"
                             >
                             <label for="is_active" class="text-sm font-medium text-gray-700">
-                                User aktif
+                                Pengguna aktif
                             </label>
                         </div>
 

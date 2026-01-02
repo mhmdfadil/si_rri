@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Detail User')
-@section('page-title', 'Detail User')
-@section('page-subtitle', 'Informasi lengkap user')
+@section('title', 'Detail Pengguna')
+@section('page-title', 'Detail Pengguna')
+@section('page-subtitle', 'Informasi lengkap pengguna')
 
 @section('content')
-<div class="max-w-5xl mx-auto">
+<div class="max-w-full mx-auto">
     
     <!-- Back Button -->
     <div class="mb-6">
@@ -16,7 +16,7 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
-            Kembali ke Daftar User
+            Kembali ke Daftar Pengguna
         </a>
     </div>
 
@@ -34,13 +34,11 @@
                     <div class="text-center">
                         <!-- Photo -->
                         <div class="inline-block relative mb-4">
-                            @if($user->photos)
-                                <img src="{{ $user->photo_url }}" alt="{{ $user->name }}" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-xl">
-                            @else
-                                <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white text-3xl font-bold border-4 border-white shadow-xl">
-                                    {{ strtoupper(substr($user->name, 0, 2)) }}
-                                </div>
-                            @endif
+                            <img 
+                                src="{{ $user->photo_url }}" 
+                                alt="{{ $user->name }}" 
+                                class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-xl"
+                            >
                             
                             <!-- Status Badge -->
                             <div class="absolute bottom-0 right-0">
@@ -79,7 +77,7 @@
                                 @method('DELETE')
                                 <button 
                                     type="submit" 
-                                    onclick="return confirm('Yakin ingin menghapus user ini? Data yang dihapus tidak dapat dikembalikan!')"
+                                    onclick="return confirm('Yakin ingin menghapus pengguna ini? Data yang dihapus tidak dapat dikembalikan!')"
                                     class="w-full bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors font-medium text-sm flex items-center justify-center gap-2"
                                 >
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,7 +252,7 @@
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
                             </svg>
-                            {{ $user->is_active ? 'Nonaktifkan User' : 'Aktifkan User' }}
+                            {{ $user->is_active ? 'Nonaktifkan Pengguna' : 'Aktifkan Pengguna' }}
                         </button>
                     </form>
 
@@ -266,7 +264,7 @@
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                         </svg>
-                        Edit User
+                        Edit Pengguna
                     </a>
                 </div>
             </div>

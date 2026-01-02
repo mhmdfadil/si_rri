@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah User')
-@section('page-title', 'Tambah User')
-@section('page-subtitle', 'Tambahkan user baru ke sistem')
+@section('title', 'Tambah Pengguna')
+@section('page-title', 'Tambah Pengguna')
+@section('page-subtitle', 'Tambahkan pengguna baru ke sistem')
 
 @section('content')
-<div class="max-w-4xl mx-auto">
+<div class="max-w-full mx-auto">
     
     <!-- Back Button -->
     <div class="mb-6">
@@ -16,7 +16,7 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
-            Kembali ke Daftar User
+            Kembali ke Daftar Pengguna
         </a>
     </div>
 
@@ -29,7 +29,7 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
                 </svg>
-                Form Tambah User
+                Form Tambah Pengguna
             </h2>
             <p class="text-emerald-50 text-sm mt-1">Lengkapi formulir di bawah ini</p>
         </div>
@@ -172,7 +172,7 @@
                                 class="w-5 h-5 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2"
                             >
                             <label for="is_active" class="text-sm font-medium text-gray-700">
-                                Aktifkan user setelah dibuat
+                                Aktifkan pengguna setelah dibuat
                             </label>
                         </div>
 
@@ -185,7 +185,7 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
-                                Simpan User
+                                Simpan Pengguna
                             </button>
                             
                             <a 

@@ -124,13 +124,11 @@
                         <!-- User Info -->
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center gap-3">
-                                @if($user->photos)
-                                    <img src="{{ $user->photo_url }}" alt="{{ $user->name }}" class="w-10 h-10 rounded-full object-cover border-2 border-emerald-100">
-                                @else
-                                    <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                                        {{ strtoupper(substr($user->name, 0, 2)) }}
-                                    </div>
-                                @endif
+                                <img 
+                                    src="{{ $user->photo_url }}" 
+                                    alt="{{ $user->name }}" 
+                                    class="w-10 h-10 rounded-full object-cover border-2 border-emerald-100"
+                                >
                                 <div>
                                     <p class="text-sm font-bold text-gray-800">{{ $user->name }}</p>
                                 </div>
