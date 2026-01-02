@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Manajemen User')
-@section('page-title', 'Manajemen User')
+@section('title', 'Manajemen Pengguna')
+@section('page-title', 'Manajemen Pengguna')
 @section('page-subtitle', 'Kelola data pengguna sistem')
 
 @section('content')
@@ -85,13 +85,13 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
-                    Tambah User
+                    Tambah Pengguna
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Users Table -->
+    <!-- Pengguna Table -->
     <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
         
         <!-- Table Header -->
@@ -100,9 +100,9 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                 </svg>
-                Daftar User
+                Daftar Pengguna
             </h2>
-            <p class="text-emerald-50 text-sm mt-1">Total: {{ $users->total() }} user</p>
+            <p class="text-emerald-50 text-sm mt-1">Total: {{ $users->total() }} pengguna</p>
         </div>
 
         <!-- Table Content -->
@@ -110,7 +110,7 @@
             <table class="w-full">
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">User</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Pengguna</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Username</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Email</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Status</th>

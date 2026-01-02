@@ -85,6 +85,13 @@
 
         <div class="border-t my-3"></div>
 
+         <a href="{{ route('users.index') }}"
+            class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('users.*')
+                        ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500'
+                        : 'text-gray-700 hover:bg-emerald-50' }} rounded-xl font-medium transition-all">
+            <span>Pengguna</span>
+        </a>
+
         <a href="{{ route('profile.index') }}"
             class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('profile.*')
                         ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500'
