@@ -19,7 +19,7 @@ class KategoriSeeder extends Seeder
 
         $kategoris = [
             [
-                'kode_kategori' => 'KAT-00001',
+                'kode_kategori' => 'KAT20260001',
                 'nama_kategori' => 'Teknologi & Digital',
                 'deskripsi' => 'Kategori untuk narasumber di bidang teknologi informasi, digital transformation, artificial intelligence, dan internet of things',
                 'is_active' => true,
@@ -27,7 +27,7 @@ class KategoriSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'kode_kategori' => 'KAT-00002',
+                'kode_kategori' => 'KKAT20260002',
                 'nama_kategori' => 'Bisnis & Ekonomi',
                 'deskripsi' => 'Kategori untuk narasumber di bidang ekonomi makro, bisnis strategis, startup, fintech, dan investasi',
                 'is_active' => true,
@@ -35,7 +35,7 @@ class KategoriSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'kode_kategori' => 'KAT-00003',
+                'kode_kategori' => 'KAT20260003',
                 'nama_kategori' => 'Kesehatan & Medis',
                 'deskripsi' => 'Kategori untuk narasumber di bidang kesehatan masyarakat, kedokteran, farmasi, dan lifestyle kesehatan',
                 'is_active' => true,
@@ -43,7 +43,7 @@ class KategoriSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'kode_kategori' => 'KAT-00004',
+                'kode_kategori' => 'KAT20260004',
                 'nama_kategori' => 'Pendidikan & Pengajaran',
                 'deskripsi' => 'Kategori untuk narasumber di bidang pendidikan formal, informal, pelatihan, dan pengembangan SDM',
                 'is_active' => true,
@@ -51,7 +51,7 @@ class KategoriSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'kode_kategori' => 'KAT-00005',
+                'kode_kategori' => 'KAT20260005',
                 'nama_kategori' => 'Hukum & Regulasi',
                 'deskripsi' => 'Kategori untuk narasumber di bidang hukum bisnis, hak kekayaan intelektual, regulasi pemerintah, dan compliance',
                 'is_active' => false, // Contoh kategori nonaktif

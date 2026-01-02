@@ -18,7 +18,7 @@ class NarasumberSeeder extends Seeder
 
         $narasumbers = [
             [
-                'kode_narasumber' => 'NRS-RRIL-00001',
+                'kode_narasumber' => 'NRS20260001',
                 'nama_lengkap' => 'Dr. Ahmad Wijaya',
                 'gelar_depan' => 'Dr.',
                 'gelar_belakang' => 'S.Kom, M.Kom',
@@ -50,7 +50,7 @@ class NarasumberSeeder extends Seeder
                 'foto_profil' => 'https://randomuser.me/api/portraits/men/32.jpg',
             ],
             [
-                'kode_narasumber' => 'NRS-RRIL-00002',
+                'kode_narasumber' => 'NRS20260002',
                 'nama_lengkap' => 'Prof. Siti Nurhaliza',
                 'gelar_depan' => 'Prof.',
                 'gelar_belakang' => 'Ph.D',
