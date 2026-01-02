@@ -260,7 +260,7 @@
                             <input type="checkbox" name="remember" class="w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500 cursor-pointer" />
                             <span class="ml-2 text-sm text-gray-700 group-hover:text-emerald-600 transition-colors">Ingat saya</span>
                         </label>
-                        <a href="#" class="text-sm text-emerald-600 hover:text-emerald-700 font-bold transition-colors">
+                        <a href="{{ route('forgot-password') }}" class="text-sm text-emerald-600 hover:text-emerald-700 font-bold transition-colors">
                             Lupa password?
                         </a>
                     </div>

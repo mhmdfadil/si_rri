@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +14,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/forgot-password', function () {
-    return view('auth.forgot-password');
-});
-
 // Guest Routes (belum login)
 Route::middleware('guest')->group(function () {
+    //Login
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+
+    // Forgot Password
+    Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('forgot-password');
+    Route::post('/forgot-password/verify', [ForgotPasswordController::class, 'verifyIdentifier'])->name('forgot-password.verify');
+    Route::post('/forgot-password/reset', [ForgotPasswordController::class, 'resetPassword'])->name('forgot-password.reset');
 });
 
 // Authenticated Routes (sudah login)

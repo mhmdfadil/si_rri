@@ -3,22 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Lupa Password - RRI Lhokseumawe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-25px) rotate(5deg); }
-        }
-        @keyframes float-delayed {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(-5deg); }
-        }
-        .float-animation {
-            animation: float 8s ease-in-out infinite;
-        }
-        .float-delayed {
-            animation: float-delayed 10s ease-in-out infinite;
         }
         @keyframes pulse-glow {
             0%, 100% { opacity: 0.15; transform: scale(1); }
@@ -36,24 +27,10 @@
             background-size: 1000px 100%;
             animation: shimmer 3s infinite;
         }
-        @keyframes wave {
-            0% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(20px) translateY(-10px); }
-            100% { transform: translateX(0) translateY(0); }
-        }
-        .wave-animation {
-            animation: wave 15s ease-in-out infinite;
-        }
         .glass-effect {
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.15);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         @keyframes slideIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -77,19 +54,6 @@
             <div class="absolute top-0 -left-20 w-96 h-96 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl pulse-glow"></div>
             <div class="absolute top-1/4 right-10 w-[500px] h-[500px] bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl pulse-glow" style="animation-delay: 2s;"></div>
             <div class="absolute -bottom-32 left-1/3 w-[450px] h-[450px] bg-green-300 rounded-full mix-blend-multiply filter blur-3xl pulse-glow" style="animation-delay: 4s;"></div>
-            <div class="absolute top-1/2 left-1/4 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl pulse-glow" style="animation-delay: 1s;"></div>
-        </div>
-
-        <!-- Floating Decorative Icons -->
-        <div class="absolute top-20 right-24 opacity-10 float-animation">
-            <svg class="w-20 h-20 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
-        </div>
-        <div class="absolute bottom-32 left-20 opacity-10 float-delayed">
-            <svg class="w-24 h-24 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-            </svg>
         </div>
 
         <!-- Main Card -->
@@ -105,13 +69,10 @@
                     
                     <div class="relative z-10 text-center">
                         <div class="mb-8 flex justify-center">
-                            <div class="relative">
-                                <div class="absolute inset-0 bg-white/20 blur-2xl rounded-full"></div>
-                                <div class="relative bg-white/25 backdrop-blur-xl p-6 rounded-3xl border-2 border-white/30 shadow-2xl">
-                                    <svg class="w-16 h-16 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                                    </svg>
-                                </div>
+                            <div class="relative bg-white/25 backdrop-blur-xl p-6 rounded-3xl border-2 border-white/30 shadow-2xl">
+                                <svg class="w-16 h-16 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
                             </div>
                         </div>
                         
@@ -123,49 +84,12 @@
                         <p class="text-lg font-semibold mb-4 text-white/95">
                             Reset Password Administrator
                         </p>
-                        
-                        <p class="text-sm text-white/80 leading-relaxed px-4 mb-8">
-                            Ikuti langkah-langkah untuk mengatur ulang password akun administrator Anda dengan aman
-                        </p>
-                        
-                        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
-                            <h3 class="text-sm font-bold mb-4 text-white">Langkah Pemulihan:</h3>
-                            <div class="space-y-3 text-left">
-                                <div class="flex items-start gap-3">
-                                    <div class="bg-white/30 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <span class="text-xs font-bold">1</span>
-                                    </div>
-                                    <p class="text-sm text-white/90">Masukkan email atau username terdaftar</p>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <div class="bg-white/30 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <span class="text-xs font-bold">2</span>
-                                    </div>
-                                    <p class="text-sm text-white/90">Verifikasi dengan CAPTCHA</p>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <div class="bg-white/30 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <span class="text-xs font-bold">3</span>
-                                    </div>
-                                    <p class="text-sm text-white/90">Buat password baru yang kuat</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Right Side - Form -->
                 <div class="p-8 md:p-10 flex flex-col justify-center bg-white">
-                    <!-- Mobile Logo -->
-                    <div class="md:hidden mb-6 text-center">
-                        <div class="inline-flex bg-gradient-to-br from-emerald-500 to-teal-600 p-4 rounded-2xl mb-3 shadow-lg">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                            </svg>
-                        </div>
-                        <h2 class="text-xl font-bold gradient-text">RRI Lhokseumawe</h2>
-                    </div>
-
+                    
                     <!-- Step Indicator -->
                     <div class="mb-6">
                         <div class="flex items-center justify-between mb-2">
@@ -236,11 +160,12 @@
 
                             <button
                                 type="button"
+                                id="btn-verify-step1"
                                 onclick="verifyStep1()"
-                                class="w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white py-4 px-6 rounded-xl font-bold shadow-xl hover:shadow-2xl hover:from-emerald-600 hover:via-teal-600 hover:to-emerald-700 transform hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
+                                class="w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white py-4 px-6 rounded-xl font-bold shadow-xl hover:shadow-2xl hover:from-emerald-600 hover:via-teal-600 hover:to-emerald-700 transform hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <span class="relative z-10 flex items-center justify-center gap-2">
-                                    Verifikasi & Lanjutkan
+                                    <span id="btn-text-step1">Verifikasi & Lanjutkan</span>
                                     <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                                     </svg>
@@ -258,6 +183,8 @@
                         </div>
 
                         <div class="space-y-5">
+                            <input type="hidden" id="user-id" value="">
+                            
                             <div class="space-y-2">
                                 <label for="new-password" class="block text-sm font-bold text-gray-700">
                                     Password Baru
@@ -344,11 +271,12 @@
 
                             <button
                                 type="button"
+                                id="btn-verify-step2"
                                 onclick="verifyStep2()"
-                                class="w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white py-4 px-6 rounded-xl font-bold shadow-xl hover:shadow-2xl hover:from-emerald-600 hover:via-teal-600 hover:to-emerald-700 transform hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
+                                class="w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white py-4 px-6 rounded-xl font-bold shadow-xl hover:shadow-2xl hover:from-emerald-600 hover:via-teal-600 hover:to-emerald-700 transform hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <span class="relative z-10 flex items-center justify-center gap-2">
-                                    Reset Password
+                                    <span id="btn-text-step2">Reset Password</span>
                                     <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
@@ -369,23 +297,7 @@
                             <h2 class="text-3xl font-bold text-gray-800 mb-3">Password Berhasil Direset!</h2>
                             <p class="text-gray-600 mb-8">Password Anda telah berhasil diperbarui. Silakan login dengan password baru Anda.</p>
                             
-                            <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6 text-left">
-                                <div class="flex items-start gap-3 mb-3">
-                                    <svg class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <div>
-                                        <p class="text-sm font-bold text-emerald-800 mb-1">Tips Keamanan:</p>
-                                        <ul class="text-xs text-emerald-700 space-y-1">
-                                            <li>• Jangan bagikan password Anda kepada siapapun</li>
-                                            <li>• Gunakan password yang berbeda untuk setiap akun</li>
-                                            <li>• Ubah password secara berkala</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <a href="#" onclick="location.reload()" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white py-4 px-8 rounded-xl font-bold shadow-xl hover:shadow-2xl hover:from-emerald-600 hover:via-teal-600 hover:to-emerald-700 transform hover:-translate-y-1 transition-all duration-300">
+                            <a href="{{ route('login') }}" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white py-4 px-8 rounded-xl font-bold shadow-xl hover:shadow-2xl hover:from-emerald-600 hover:via-teal-600 hover:to-emerald-700 transform hover:-translate-y-1 transition-all duration-300">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
                                 </svg>
@@ -395,8 +307,8 @@
                     </div>
 
                     <!-- Back to Login Link -->
-                    <div class="mt-6 text-center">
-                        <a href="#" onclick="location.reload()" class="text-sm text-emerald-600 hover:text-emerald-700 font-bold transition-colors inline-flex items-center gap-1">
+                    <div class="mt-6 text-center" id="back-to-login">
+                        <a href="{{ route('login') }}" class="text-sm text-emerald-600 hover:text-emerald-700 font-bold transition-colors inline-flex items-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                             </svg>
@@ -416,15 +328,10 @@
     </div>
 
     <script>
-        // Data dummy users
-        const dummyUsers = [
-            { identifier: 'admin@rri.co.id', name: 'Administrator Utama' },
-            { identifier: 'admin_rri', name: 'Admin RRI Lhokseumawe' },
-            { identifier: 'operator@rri.co.id', name: 'Operator Siaran' }
-        ];
-
+        // CSRF Token Setup
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         let currentCaptcha = '';
-        let currentUser = null;
+        let currentUserId = null;
 
         // Generate CAPTCHA
         function generateCaptcha() {
@@ -471,38 +378,43 @@
             const indicators = ['step1-indicator', 'step2-indicator', 'step3-indicator'];
             const lines = ['line1', 'line2'];
             const texts = [
-                'Langkah 1: Verifikasi Identitas',
-                'Langkah 2: Buat Password Baru',
-                'Langkah 3: Selesai'
+            'Langkah 1: Verifikasi Identitas',
+            'Langkah 2: Buat Password Baru',
+            'Langkah 3: Selesai'
             ];
 
             indicators.forEach((id, index) => {
-                const element = document.getElementById(id);
-                if (index < step) {
-                    element.className = 'w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center text-sm font-bold';
-                } else if (index === step) {
-                    element.className = 'w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center text-sm font-bold';
-                } else {
-                    element.className = 'w-8 h-8 rounded-full bg-gray-200 text-gray-400 flex items-center justify-center text-sm font-bold';
-                }
-            });
+            const element = document.getElementById(id);
+            if (index <= step) {
+                element.className = 'w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center text-sm font-bold';
+            } else {
+                element.className = 'w-8 h-8 rounded-full bg-gray-200 text-gray-400 flex items-center justify-center text-sm font-bold';
+            }
+        });
 
-            lines.forEach((id, index) => {
-                const element = document.getElementById(id);
-                if (index < step) {
-                    element.className = 'w-12 h-1 bg-emerald-500';
-                } else {
-                    element.className = 'w-12 h-1 bg-gray-200';
-                }
-            });
+        lines.forEach((id, index) => {
+            const element = document.getElementById(id);
+            if (index < step) {
+                element.className = 'w-12 h-1 bg-emerald-500';
+            } else {
+                element.className = 'w-12 h-1 bg-gray-200';
+            }
+        });
 
-            document.getElementById('step-text').textContent = texts[step];
+        document.getElementById('step-text').textContent = texts[step];
+            
+            // Hide back to login on step 3
+            if (step === 2) {
+                document.getElementById('back-to-login').classList.add('hidden');
+            }
         }
 
         // Verify Step 1
-        function verifyStep1() {
+        async function verifyStep1() {
             const identifier = document.getElementById('identifier').value.trim();
             const captchaInput = document.getElementById('captcha-input').value.trim();
+            const button = document.getElementById('btn-verify-step1');
+            const buttonText = document.getElementById('btn-text-step1');
 
             if (!identifier) {
                 showAlert('error', 'Mohon masukkan email atau username Anda.');
@@ -514,33 +426,48 @@
                 return;
             }
 
-            if (captchaInput !== currentCaptcha) {
-                showAlert('error', 'Kode CAPTCHA tidak sesuai. Silakan coba lagi.');
-                generateCaptcha();
-                document.getElementById('captcha-input').value = '';
-                return;
+            button.disabled = true;
+            buttonText.textContent = 'Memverifikasi...';
+
+            try {
+                const response = await fetch('/forgot-password/verify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify({
+                        identifier: identifier,
+                        captcha: captchaInput,
+                        captcha_challenge: currentCaptcha
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    currentUserId = data.data.user_id;
+                    document.getElementById('user-id').value = currentUserId;
+                    showAlert('info', data.message);
+
+                    setTimeout(() => {
+                        document.getElementById('step1').classList.add('hidden');
+                        document.getElementById('step2').classList.remove('hidden');
+                        document.getElementById('step2').classList.add('slide-in');
+                        updateStepIndicator(1);
+                    }, 1500);
+                } else {
+                    showAlert('error', data.message);
+                    generateCaptcha();
+                    document.getElementById('captcha-input').value = '';
+                }
+            } catch (error) {
+                showAlert('error', 'Terjadi kesalahan sistem. Silakan coba lagi.');
+                console.error('Error:', error);
+            } finally {
+                button.disabled = false;
+                buttonText.textContent = 'Verifikasi & Lanjutkan';
             }
-
-            // Check if user exists
-            const user = dummyUsers.find(u => u.identifier.toLowerCase() === identifier.toLowerCase());
-            
-            if (!user) {
-                showAlert('error', 'Email atau username tidak ditemukan dalam sistem.');
-                generateCaptcha();
-                document.getElementById('captcha-input').value = '';
-                return;
-            }
-
-            currentUser = user;
-            showAlert('info', `Akun ditemukan: ${user.name}. Silakan buat password baru Anda.`);
-
-            // Move to step 2
-            setTimeout(() => {
-                document.getElementById('step1').classList.add('hidden');
-                document.getElementById('step2').classList.remove('hidden');
-                document.getElementById('step2').classList.add('slide-in');
-                updateStepIndicator(1);
-            }, 1500);
         }
 
         // Check password strength
@@ -553,27 +480,24 @@
                 symbol: /[!@#$%^&*(),.?":{}|<>]/.test(password)
             };
 
-            // Update requirement checklist
             updateRequirement('req-length', requirements.length);
             updateRequirement('req-upper', requirements.upper);
             updateRequirement('req-lower', requirements.lower);
             updateRequirement('req-symbol', requirements.symbol);
 
-            // Calculate strength
             const strength = Object.values(requirements).filter(Boolean).length;
             updateStrengthBar(strength);
         }
 
         function updateRequirement(id, met) {
             const element = document.getElementById(id);
+            const currentHTML = element.innerHTML;
+            
             if (met) {
-                element.innerHTML = element.innerHTML.replace('○', '✓').replace('text-gray-400', 'text-emerald-600');
-                element.className = 'flex items-center gap-2 text-emerald-600';
+                element.innerHTML = currentHTML.replace('○', '✓');
+                element.className = 'flex items-center gap-2 text-emerald-600 font-medium';
             } else {
-                element.innerHTML = element.innerHTML.replace('✓', '○');
-                if (element.innerHTML.includes('text-emerald-600')) {
-                    element.innerHTML = element.innerHTML.replace('text-emerald-600', 'text-gray-400');
-                }
+                element.innerHTML = currentHTML.replace('✓', '○');
                 element.className = 'flex items-center gap-2';
             }
         }
@@ -617,11 +541,13 @@
         }
 
         // Verify Step 2
-        function verifyStep2() {
+        async function verifyStep2() {
+            const userId = document.getElementById('user-id').value;
             const newPassword = document.getElementById('new-password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
+            const button = document.getElementById('btn-verify-step2');
+            const buttonText = document.getElementById('btn-text-step2');
 
-            // Validate password requirements
             const requirements = {
                 length: newPassword.length >= 8,
                 upper: /[A-Z]/.test(newPassword),
@@ -634,23 +560,8 @@
                 return;
             }
 
-            if (!requirements.length) {
-                showAlert('error', 'Password harus minimal 8 karakter.');
-                return;
-            }
-
-            if (!requirements.upper) {
-                showAlert('error', 'Password harus mengandung minimal 1 huruf besar.');
-                return;
-            }
-
-            if (!requirements.lower) {
-                showAlert('error', 'Password harus mengandung minimal 1 huruf kecil.');
-                return;
-            }
-
-            if (!requirements.symbol) {
-                showAlert('error', 'Password harus mengandung minimal 1 simbol.');
+            if (!requirements.length || !requirements.upper || !requirements.lower || !requirements.symbol) {
+                showAlert('error', 'Password harus memenuhi semua kriteria keamanan.');
                 return;
             }
 
@@ -659,20 +570,57 @@
                 return;
             }
 
-            showAlert('success', 'Password berhasil direset!');
+            button.disabled = true;
+            buttonText.textContent = 'Mereset Password...';
 
-            // Move to step 3
-            setTimeout(() => {
-                document.getElementById('step2').classList.add('hidden');
-                document.getElementById('step3').classList.remove('hidden');
-                document.getElementById('step3').classList.add('slide-in');
-                updateStepIndicator(2);
-            }, 1500);
+            try {
+                const response = await fetch('/forgot-password/reset', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify({
+                        user_id: userId,
+                        new_password: newPassword,
+                        confirm_password: confirmPassword
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showAlert('success', data.message);
+
+                    setTimeout(() => {
+                        document.getElementById('step2').classList.add('hidden');
+                        document.getElementById('step3').classList.remove('hidden');
+                        document.getElementById('step3').classList.add('slide-in');
+                        updateStepIndicator(2);
+                    }, 1500);
+                } else {
+                    showAlert('error', data.message);
+                }
+            } catch (error) {
+                showAlert('error', 'Terjadi kesalahan sistem. Silakan coba lagi.');
+                console.error('Error:', error);
+            } finally {
+                button.disabled = false;
+                buttonText.textContent = 'Reset Password';
+            }
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             generateCaptcha();
+            
+            document.getElementById('captcha-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') verifyStep1();
+            });
+            
+            document.getElementById('confirm-password').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') verifyStep2();
+            });
         });
     </script>
 </body>
