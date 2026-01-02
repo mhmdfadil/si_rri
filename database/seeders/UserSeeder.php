@@ -32,5 +32,7 @@ class UserSeeder extends Seeder
             'is_active' => true,
             'last_login_at' => now(),
         ]);
+
+        $this->command->info('Berhasil menambahkan 2 data users contoh!');
     }
 }
