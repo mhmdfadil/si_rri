@@ -1,16 +1,16 @@
-<header class="h-16 bg-white shadow-md flex items-center justify-between px-4 lg:px-6 z-30">
+<header class="h-16 bg-white dark:bg-gray-800 shadow-md flex items-center justify-between px-4 lg:px-6 z-30 transition-colors duration-200">
     
     <!-- Left Side -->
     <div class="flex items-center gap-4">
-        <button id="openSidebar" class="lg:hidden text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition-colors">
+        <button id="openSidebar" class="lg:hidden text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
         </button>
         
         <div class="hidden lg:block">
-            <h1 class="text-xl font-bold text-gray-800">@yield('page-title', 'Dashboard')</h1>
-            <p class="text-xs text-gray-600">@yield('page-subtitle', 'Selamat datang di sistem database RRI')</p>
+            <h1 class="text-xl font-bold text-gray-800 dark:text-white">@yield('page-title', 'Dashboard')</h1>
+            <p class="text-xs text-gray-600 dark:text-gray-400">@yield('page-subtitle', 'Selamat datang di sistem database RRI')</p>
         </div>
     </div>
 
@@ -18,7 +18,7 @@
     <div class="flex items-center gap-3">
         
         <!-- Search Button (Mobile) -->
-        <button id="mobileSearchBtn" class="lg:hidden text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition-colors">
+        <button id="mobileSearchBtn" class="lg:hidden text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
@@ -30,29 +30,33 @@
                 type="text" 
                 id="searchInput"
                 placeholder="Cari konten..." 
-                class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all outline-none text-sm"
+                class="w-64 pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-emerald-500 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 dark:focus:ring-emerald-900 transition-all outline-none text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             />
-            <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
-            <button id="clearSearch" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 hidden">
+            <button id="clearSearch" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hidden">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
 
-        <!-- Notifications -->
-        <button class="relative text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+        <!-- Dark Mode Toggle -->
+        <button id="themeToggle" class="relative text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors" title="Toggle Dark Mode">
+            <!-- Sun Icon (Show in Dark Mode) -->
+            <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
             </svg>
-            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            <!-- Moon Icon (Show in Light Mode) -->
+            <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
         </button>
 
         <!-- User Profile -->
-        <div class="hidden lg:flex items-center gap-2 pl-3 border-l border-gray-300">
-            <div class="w-9 h-9 rounded-full overflow-hidden bg-gray-200">
+        <div class="hidden lg:flex items-center gap-2 pl-3 border-l border-gray-300 dark:border-gray-600">
+            <div class="w-9 h-9 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700">
                 <img 
                     src="{{ Auth::user()?->photo_url }}"
                     alt="User Avatar"
@@ -61,10 +65,10 @@
             </div>
 
             <div class="hidden xl:block">
-                <p class="text-sm font-bold text-gray-800 leading-tight">
+                <p class="text-sm font-bold text-gray-800 dark:text-white leading-tight">
                     {{ Auth::user()?->name ?? 'Admin User' }}
                 </p>
-                <p class="text-xs text-gray-600">
+                <p class="text-xs text-gray-600 dark:text-gray-400">
                     {{ Auth::user()?->role ?? 'Administrator' }}
                 </p>
             </div>
@@ -74,9 +78,9 @@
 </header>
 
 <!-- Mobile Search Modal -->
-<div id="mobileSearchModal" class="fixed inset-0 bg-white z-50 hidden lg:hidden flex-col">
-    <div class="flex items-center gap-3 p-4 border-b bg-white shadow-sm">
-        <button id="closeMobileSearch" class="text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition-colors">
+<div id="mobileSearchModal" class="fixed inset-0 bg-white dark:bg-gray-800 z-50 hidden lg:hidden flex-col">
+    <div class="flex items-center gap-3 p-4 border-b dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm">
+        <button id="closeMobileSearch" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
@@ -86,27 +90,27 @@
                 type="text" 
                 id="mobileSearchInput"
                 placeholder="Cari konten..." 
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 outline-none"
+                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-emerald-500 dark:focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 dark:focus:ring-emerald-900 outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             />
-            <button id="clearMobileSearch" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 hidden">
+            <button id="clearMobileSearch" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hidden">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
     </div>
-    <div id="mobileSearchInfo" class="px-4 py-2 bg-emerald-50 border-b hidden">
-        <p class="text-sm text-emerald-700">
+    <div id="mobileSearchInfo" class="px-4 py-2 bg-emerald-50 dark:bg-emerald-900/30 border-b dark:border-gray-700 hidden">
+        <p class="text-sm text-emerald-700 dark:text-emerald-300">
             <span id="mobileMatchCount">0</span> hasil ditemukan
             <span id="mobileCurrentMatch" class="ml-2 hidden">
                 (<span id="mobileCurrentNum">1</span> dari <span id="mobileTotalNum">0</span>)
             </span>
         </p>
     </div>
-    <div id="mobileSearchContent" class="flex-1 overflow-y-auto bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50 p-4">
+    <div id="mobileSearchContent" class="flex-1 overflow-y-auto bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
         <!-- Content will be cloned here -->
     </div>
-    <div class="p-4 bg-white border-t flex gap-2" id="mobileSearchNav">
+    <div class="p-4 bg-white dark:bg-gray-800 border-t dark:border-gray-700 flex gap-2" id="mobileSearchNav">
         <button id="mobilePrevMatch" class="flex-1 px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
             ← Sebelumnya
         </button>
@@ -126,15 +130,114 @@
         border-radius: 2px;
     }
     
+    .dark .search-highlight {
+        background-color: #fbbf24;
+        color: #451a03;
+    }
+    
     .search-highlight-current {
         background-color: #fb923c;
         color: #7c2d12;
+    }
+    
+    .dark .search-highlight-current {
+        background-color: #f97316;
+        color: #431407;
     }
 </style>
 
 @push('scripts')
 <script>
+// Initialize theme IMMEDIATELY before DOM loads (moved to inline script)
+(function() {
+    function getStoredTheme() {
+        try {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        } catch (e) {
+            return 'light';
+        }
+    }
+    
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }
+    
+    // Apply immediately
+    applyTheme(getStoredTheme());
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
+    // ============================================
+    // DARK MODE FUNCTIONALITY
+    // ============================================
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const htmlElement = document.documentElement;
+    
+    // Update icon visibility
+    function updateIcons() {
+        const isDark = htmlElement.classList.contains('dark');
+        if (isDark) {
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+    }
+    
+    // Initialize icons
+    updateIcons();
+    
+    // Toggle theme
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            if (newTheme === 'dark') {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+            
+            try {
+                localStorage.setItem('theme', newTheme);
+            } catch (e) {
+                console.warn('Could not save theme preference');
+            }
+            
+            updateIcons();
+        });
+    }
+    
+    // Listen for system theme changes (optional)
+    try {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only update if user hasn't manually set a preference
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    htmlElement.classList.add('dark');
+                } else {
+                    htmlElement.classList.remove('dark');
+                }
+                updateIcons();
+            }
+        });
+    } catch (e) {
+        // Ignore if browser doesn't support this
+    }
+
+    // ============================================
+    // SEARCH FUNCTIONALITY
+    // ============================================
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearch');
     const mobileSearchBtn = document.getElementById('mobileSearchBtn');
@@ -148,27 +251,22 @@ document.addEventListener('DOMContentLoaded', function() {
     let mobileHighlightedElements = [];
     let mobileCurrentIndex = 0;
 
-    // Function to escape regex special characters
     function escapeRegex(string) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    // Function to highlight text in container
     function highlightTextInContainer(container, searchTerm) {
         if (!searchTerm || searchTerm.length < 2) return [];
 
-        // Get all text nodes
         const walker = document.createTreeWalker(
             container,
             NodeFilter.SHOW_TEXT,
             {
                 acceptNode: function(node) {
-                    // Skip script and style tags
                     if (node.parentElement.tagName === 'SCRIPT' || 
                         node.parentElement.tagName === 'STYLE') {
                         return NodeFilter.FILTER_REJECT;
                     }
-                    // Only accept nodes with text content
                     if (node.textContent.trim().length > 0) {
                         return NodeFilter.FILTER_ACCEPT;
                     }
@@ -183,7 +281,6 @@ document.addEventListener('DOMContentLoaded', function() {
             textNodes.push(node);
         }
 
-        // Highlight matches
         const regex = new RegExp(`(${escapeRegex(searchTerm)})`, 'gi');
         
         textNodes.forEach(textNode => {
@@ -195,13 +292,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Collect and return all highlighted elements
         return Array.from(container.querySelectorAll('.search-highlight'));
     }
 
-    // Function to highlight text (Desktop)
     function highlightText(searchTerm) {
-        // Remove previous highlights
         removeHighlights();
         
         const mainContent = document.querySelector('main');
@@ -212,11 +306,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (highlightedElements.length > 0) {
             currentHighlightIndex = 0;
             scrollToHighlight(0);
-            showSearchInfo();
         }
     }
 
-    // Function to remove highlights
     function removeHighlights() {
         const mainContent = document.querySelector('main');
         if (!mainContent) return;
@@ -225,10 +317,9 @@ document.addEventListener('DOMContentLoaded', function() {
         highlights.forEach(highlight => {
             const parent = highlight.parentNode;
             parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
-            parent.normalize(); // Merge adjacent text nodes
+            parent.normalize();
         });
 
-        // Remove wrapper spans
         const spans = mainContent.querySelectorAll('span');
         spans.forEach(span => {
             if (span.childNodes.length === 1 && span.childNodes[0].nodeType === Node.TEXT_NODE) {
@@ -238,58 +329,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
         highlightedElements = [];
         currentHighlightIndex = 0;
-        hideSearchInfo();
     }
 
-    // Function to scroll to highlight
     function scrollToHighlight(index) {
         if (highlightedElements.length === 0) return;
 
-        // Remove current highlight from all
         highlightedElements.forEach(el => {
             el.classList.remove('search-highlight-current');
         });
 
-        // Add current highlight
         const element = highlightedElements[index];
         element.classList.add('search-highlight-current');
         
-        // Scroll to element
         element.scrollIntoView({
             behavior: 'smooth',
             block: 'center'
         });
     }
 
-    // Function to scroll to mobile highlight
     function scrollToMobileHighlight(index) {
         if (mobileHighlightedElements.length === 0) return;
 
-        // Remove current highlight from all
         mobileHighlightedElements.forEach(el => {
             el.classList.remove('search-highlight-current');
         });
 
-        // Add current highlight
         const element = mobileHighlightedElements[index];
         element.classList.add('search-highlight-current');
         
-        // Scroll to element in mobile modal
         element.scrollIntoView({
             behavior: 'smooth',
             block: 'center'
         });
-    }
-
-    // Function to show search info
-    function showSearchInfo() {
-        // You can add a notification or counter here
-        console.log(`Found ${highlightedElements.length} matches`);
-    }
-
-    // Function to hide search info
-    function hideSearchInfo() {
-        // Hide any search info notification
     }
 
     // Desktop search
@@ -298,35 +369,29 @@ document.addEventListener('DOMContentLoaded', function() {
         searchInput.addEventListener('input', function(e) {
             const value = e.target.value.trim();
             
-            // Show/hide clear button
             if (value.length > 0) {
                 clearSearchBtn.classList.remove('hidden');
             } else {
                 clearSearchBtn.classList.add('hidden');
             }
 
-            // Debounce search
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 highlightText(value);
             }, 300);
         });
 
-        // Navigate with Enter and Shift+Enter
         searchInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && highlightedElements.length > 0) {
                 if (e.shiftKey) {
-                    // Previous match
                     currentHighlightIndex = (currentHighlightIndex - 1 + highlightedElements.length) % highlightedElements.length;
                 } else {
-                    // Next match
                     currentHighlightIndex = (currentHighlightIndex + 1) % highlightedElements.length;
                 }
                 scrollToHighlight(currentHighlightIndex);
             }
         });
 
-        // Clear search
         clearSearchBtn.addEventListener('click', function() {
             searchInput.value = '';
             clearSearchBtn.classList.add('hidden');
@@ -346,7 +411,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileNextMatch = document.getElementById('mobileNextMatch');
 
         mobileSearchBtn.addEventListener('click', function() {
-            // Clone main content to mobile modal
             const mainContent = document.querySelector('main');
             if (mainContent) {
                 const clonedContent = mainContent.cloneNode(true);
@@ -372,7 +436,6 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileCurrentIndex = 0;
         });
 
-        // Update mobile search info
         function updateMobileSearchInfo() {
             if (mobileHighlightedElements.length > 0) {
                 mobileSearchInfo.classList.remove('hidden');
@@ -394,7 +457,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileSearchInput.addEventListener('input', function(e) {
             const value = e.target.value.trim();
             
-            // Show/hide clear button
             if (value.length > 0) {
                 clearMobileSearchBtn.classList.remove('hidden');
             } else {
@@ -404,21 +466,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
             clearTimeout(mobileSearchTimeout);
             mobileSearchTimeout = setTimeout(() => {
-                // Remove previous highlights in mobile content
                 mobileSearchContent.querySelectorAll('.search-highlight').forEach(el => {
                     const parent = el.parentNode;
                     parent.replaceChild(document.createTextNode(el.textContent), el);
                     parent.normalize();
                 });
                 
-                // Remove wrapper spans
                 mobileSearchContent.querySelectorAll('span').forEach(span => {
                     if (span.childNodes.length === 1 && span.childNodes[0].nodeType === Node.TEXT_NODE) {
                         span.parentNode.replaceChild(span.firstChild, span);
                     }
                 });
                 
-                // Highlight in mobile content
                 mobileHighlightedElements = highlightTextInContainer(mobileSearchContent, value);
                 mobileCurrentIndex = 0;
                 
@@ -430,13 +489,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         });
 
-        // Clear mobile search
         clearMobileSearchBtn.addEventListener('click', function() {
             mobileSearchInput.value = '';
             clearMobileSearchBtn.classList.add('hidden');
             mobileSearchInfo.classList.add('hidden');
             
-            // Remove highlights
             mobileSearchContent.querySelectorAll('.search-highlight').forEach(el => {
                 const parent = el.parentNode;
                 parent.replaceChild(document.createTextNode(el.textContent), el);
@@ -449,7 +506,6 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileSearchInput.focus();
         });
 
-        // Mobile navigation buttons
         mobilePrevMatch.addEventListener('click', function() {
             if (mobileHighlightedElements.length > 0) {
                 mobileCurrentIndex = (mobileCurrentIndex - 1 + mobileHighlightedElements.length) % mobileHighlightedElements.length;
@@ -467,7 +523,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Clear highlights when navigating away
     window.addEventListener('beforeunload', function() {
         removeHighlights();
     });

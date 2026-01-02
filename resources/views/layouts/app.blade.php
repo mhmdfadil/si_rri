@@ -5,7 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') - RRI Lhokseumawe</title>
+    <!-- Initialize Theme BEFORE Tailwind loads (prevent flash) -->
+    <script>
+        (function() {
+            try {
+                const theme = localStorage.getItem('theme') || 
+                             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {
+                // Ignore localStorage errors
+            }
+        })();
+    </script>
+    
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config (AFTER CDN loaded) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
     <style>
         @keyframes slideIn {
             from { transform: translateX(-100%); }
