@@ -34,18 +34,12 @@
                     <div class="text-center">
                         <!-- Photo -->
                         <div class="inline-block relative mb-4">
-                            @if($narasumber->foto_profil)
-                                <img 
-                                    src="{{ asset('storage/' . $narasumber->foto_profil) }}" 
-                                    alt="{{ $narasumber->nama_lengkap }}" 
-                                    class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-xl"
-                                >
-                            @else
-                                <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-2xl border-4 border-white shadow-xl">
-                                    {{ strtoupper(substr($narasumber->nama_lengkap, 0, 2)) }}
-                                </div>
-                            @endif
-                            
+                            <img
+                                src="{{ $narasumber->foto_profil_url }}"
+                                alt="{{ $narasumber->nama_lengkap }}"
+                                class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-xl"
+                            >
+
                             <!-- Status Badge -->
                             <div class="absolute bottom-0 right-0">
                                 @if($narasumber->status == 'aktif')
@@ -73,20 +67,28 @@
                         </div>
 
                         <!-- Name -->
-                        <h3 class="text-xl font-bold text-gray-800 mb-1">{{ $narasumber->nama_lengkap_with_gelar }}</h3>
-                        <p class="text-sm text-gray-600 mb-1">{{ $narasumber->kode_narasumber }}</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">
+                            {{ $narasumber->nama_lengkap_with_gelar }}
+                        </h3>
+
+                        <p class="text-sm text-gray-600 mb-1">
+                            {{ $narasumber->kode_narasumber }}
+                        </p>
+
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 mb-4">
                             {{ $narasumber->bidang_keahlian }}
                         </span>
 
                         <!-- Action Buttons -->
                         <div class="flex items-center gap-2 justify-center mt-4">
-                            <a 
-                                href="{{ route('narasumber.edit', $narasumber) }}" 
+                            <a
+                                href="{{ route('narasumber.edit', $narasumber) }}"
                                 class="flex-1 bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors font-medium text-sm flex items-center justify-center gap-2"
                             >
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                                    </path>
                                 </svg>
                                 Edit
                             </a>
@@ -94,13 +96,15 @@
                             <form action="{{ route('narasumber.destroy', $narasumber) }}" method="POST" class="flex-1">
                                 @csrf
                                 @method('DELETE')
-                                <button 
-                                    type="submit" 
+                                <button
+                                    type="submit"
                                     onclick="return confirm('Yakin ingin menghapus narasumber ini? Data yang dihapus tidak dapat dikembalikan!')"
                                     class="w-full bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors font-medium text-sm flex items-center justify-center gap-2"
                                 >
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                        </path>
                                     </svg>
                                     Hapus
                                 </button>
@@ -108,6 +112,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <!-- Quick Info -->

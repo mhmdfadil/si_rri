@@ -5,7 +5,7 @@
 @section('page-subtitle', 'Tambahkan narasumber baru')
 
 @section('content')
-<div class="max-w-6xl mx-auto">
+<div class="max-w-full mx-auto">
     
     <!-- Back Button -->
     <div class="mb-6">

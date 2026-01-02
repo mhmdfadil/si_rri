@@ -5,7 +5,7 @@
 @section('page-subtitle', 'Kelola data narasumber RRI Lhokseumawe')
 
 @section('content')
-<div class="max-w-7xl mx-auto">
+<div class="max-w-full mx-auto">
     
     <!-- Success Message -->
     @if(session('success'))
@@ -201,16 +201,18 @@
                         <!-- Narasumber Info -->
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-3">
-                                @if($item->foto_profil)
-                                    <img src="{{ asset('storage/' . $item->foto_profil) }}" alt="{{ $item->nama_lengkap }}" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-100">
-                                @else
-                                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                                        {{ strtoupper(substr($item->nama_lengkap, 0, 2)) }}
-                                    </div>
-                                @endif
+                                <img
+                                    src="{{ $item->foto_profil_url }}"
+                                    alt="{{ $item->nama_lengkap }}"
+                                    class="w-12 h-12 rounded-full object-cover border-2 border-emerald-100"
+                                >
                                 <div>
-                                    <p class="text-sm font-bold text-gray-800">{{ $item->nama_lengkap_with_gelar }}</p>
-                                    <p class="text-xs text-gray-600">{{ $item->kode_narasumber }}</p>
+                                    <p class="text-sm font-bold text-gray-800">
+                                        {{ $item->nama_lengkap_with_gelar }}
+                                    </p>
+                                    <p class="text-xs text-gray-600">
+                                        {{ $item->kode_narasumber }}
+                                    </p>
                                 </div>
                             </div>
                         </td>

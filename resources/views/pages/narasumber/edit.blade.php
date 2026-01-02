@@ -5,7 +5,7 @@
 @section('page-subtitle', 'Perbarui data narasumber')
 
 @section('content')
-<div class="max-w-6xl mx-auto">
+<div class="max-w-full mx-auto">
     
     <!-- Back Button -->
     <div class="mb-6">
@@ -29,30 +29,49 @@
             <div class="p-6">
                 <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
                     <div class="lg:col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-3">Foto Profil</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-3">
+                            Foto Profil
+                        </label>
+
                         <div class="text-center">
                             <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg mx-auto">
-                                <div id="photoPreview" class="w-full h-full bg-gray-200 flex items-center justify-center">
-                                    @if($narasumber->foto_profil)
-                                        <img src="{{ asset('storage/' . $narasumber->foto_profil) }}" alt="{{ $narasumber->nama_lengkap }}" class="w-full h-full object-cover">
-                                    @else
-                                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                                    @endif
-                                </div>
+                                <img
+                                    id="photoPreview"
+                                    src="{{ $narasumber->foto_profil_url }}"
+                                    alt="{{ $narasumber->nama_lengkap }}"
+                                    class="w-full h-full object-cover"
+                                >
                             </div>
-                            <label for="foto_profil" class="cursor-pointer inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-lg hover:bg-emerald-100 transition-colors font-medium text-sm mt-4">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+
+                            <label
+                                for="foto_profil"
+                                class="cursor-pointer inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-lg hover:bg-emerald-100 transition-colors font-medium text-sm mt-4"
+                            >
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 13a3 3 0 11-6 0 3 3 0 016 0z">
+                                    </path>
+                                </svg>
                                 Ubah Foto
                             </label>
-                            <input type="file" id="foto_profil" name="foto_profil" class="hidden" accept="image/*" onchange="previewPhoto(event)">
-                            <p class="text-xs text-gray-500 mt-2">Max. 2MB</p>
-                            @if($narasumber->foto_profil)
-                                <label class="flex items-center justify-center gap-2 text-xs text-red-600 mt-2 cursor-pointer">
-                                    <input type="checkbox" name="remove_photo" value="1" class="rounded">
-                                    Hapus foto
-                                </label>
-                            @endif
+
+                            <input
+                                type="file"
+                                id="foto_profil"
+                                name="foto_profil"
+                                class="hidden"
+                                accept="image/*"
+                                onchange="previewPhoto(event)"
+                            >
+
+                            <p class="text-xs text-gray-500 mt-2">
+                                Max. 2MB (JPG, PNG, JPEG)
+                            </p>
                         </div>
+
                     </div>
                     <div class="lg:col-span-3 space-y-4">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -77,7 +96,10 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir" value="{{ old('tanggal_lahir', $narasumber->tanggal_lahir) }}" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 outline-none">
+                                <input type="date"
+                                    name="tanggal_lahir"
+                                    value="{{ old('tanggal_lahir', optional($narasumber->tanggal_lahir)->format('Y-m-d')) }}"
+                                    class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 outline-none">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin</label>
@@ -261,18 +283,52 @@
     </form>
 </div>
 
-@push('scripts')
 <script>
+// Preview foto saat dipilih
 function previewPhoto(event) {
     const file = event.target.files[0];
     if (file) {
+        // Validasi ukuran file (max 2MB)
+        if (file.size > 2 * 1024 * 1024) {
+            alert('Ukuran file terlalu besar! Maksimal 2MB');
+            event.target.value = '';
+            return;
+        }
+
+        // Validasi tipe file
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+        if (!validTypes.includes(file.type)) {
+            alert('Format file tidak didukung! Gunakan JPG, JPEG, atau PNG');
+            event.target.value = '';
+            return;
+        }
+
         const reader = new FileReader();
         reader.onload = function(e) {
-            document.getElementById('photoPreview').innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover">`;
+            // Langsung ubah src dari img yang sudah ada
+            const imgElement = document.getElementById('photoPreview');
+            imgElement.src = e.target.result;
         }
         reader.readAsDataURL(file);
+
+        // Uncheck checkbox hapus foto jika ada
+        const removeCheckbox = document.getElementById('removePhotoCheckbox');
+        if (removeCheckbox) {
+            removeCheckbox.checked = false;
+        }
+    }
+}
+
+// Handle checkbox hapus foto
+function handleRemovePhoto(checkbox) {
+    if (checkbox.checked) {
+        // Reset input file jika user memilih untuk hapus foto
+        const fileInput = document.getElementById('foto_profil');
+        if (fileInput) {
+            fileInput.value = '';
+        }
     }
 }
 </script>
-@endpush
+
 @endsection

@@ -154,4 +154,24 @@ class Narasumber extends Model
         
         return implode(', ', $alamat);
     }
+
+    /**
+     * Accessor untuk mendapatkan URL foto
+     */
+    public function getFotoProfilUrlAttribute()
+    {
+        if ($this->foto_profil) {
+            // Jika sudah URL
+            if (filter_var($this->foto_profil, FILTER_VALIDATE_URL)) {
+                return $this->foto_profil;
+            }
+
+            // Jika path storage
+            return asset('storage/' . $this->foto_profil);
+        }
+
+        // Default avatar
+        return asset('images/default-avatar.png');
+    }
+
 }
