@@ -5,7 +5,7 @@
 @section('page-subtitle', 'Informasi lengkap kategori')
 
 @section('content')
-<div class="max-w-5xl mx-auto">
+<div class="max-w-full mx-auto">
     
     <!-- Success Message -->
     @if(session('success'))
