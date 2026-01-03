@@ -9,34 +9,34 @@
     
     <!-- Success Message -->
     @if(session('success'))
-    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-6 rounded-lg">
+    <div class="bg-emerald-50 dark:bg-emerald-900/30 border-l-4 border-emerald-500 dark:border-emerald-400 p-4 mb-6 rounded-lg transition-colors duration-200">
         <div class="flex items-center">
-            <svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-emerald-500 dark:text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <p class="text-emerald-700 font-medium">{{ session('success') }}</p>
+            <p class="text-emerald-700 dark:text-emerald-300 font-medium">{{ session('success') }}</p>
         </div>
     </div>
     @endif
 
     @if(session('error'))
-    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-lg">
+    <div class="bg-red-50 dark:bg-red-900/30 border-l-4 border-red-500 dark:border-red-400 p-4 mb-6 rounded-lg transition-colors duration-200">
         <div class="flex items-center">
-            <svg class="w-5 h-5 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-red-500 dark:text-red-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
-            <p class="text-red-700 font-medium">{{ session('error') }}</p>
+            <p class="text-red-700 dark:text-red-300 font-medium">{{ session('error') }}</p>
         </div>
     </div>
     @endif
 
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-white rounded-xl p-4 shadow-lg border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-200">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Total Kategori</p>
-                    <p class="text-2xl font-bold text-gray-800 mt-1">{{ \App\Models\Kategori::count() }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Total Kategori</p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-white mt-1">{{ \App\Models\Kategori::count() }}</p>
                 </div>
                 <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,11 +46,11 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-xl p-4 shadow-lg border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-200">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Kategori Aktif</p>
-                    <p class="text-2xl font-bold text-green-600 mt-1">{{ \App\Models\Kategori::active()->count() }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Kategori Aktif</p>
+                    <p class="text-2xl font-bold text-green-600 dark:text-green-400 mt-1">{{ \App\Models\Kategori::active()->count() }}</p>
                 </div>
                 <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,11 +60,11 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-xl p-4 shadow-lg border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-200">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Kategori Nonaktif</p>
-                    <p class="text-2xl font-bold text-red-600 mt-1">{{ \App\Models\Kategori::inactive()->count() }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Kategori Nonaktif</p>
+                    <p class="text-2xl font-bold text-red-600 dark:text-red-400 mt-1">{{ \App\Models\Kategori::inactive()->count() }}</p>
                 </div>
                 <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,22 +76,22 @@
     </div>
 
     <!-- Filter & Search Section -->
-    <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6 mb-6">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 mb-6 transition-colors duration-200">
         <form action="{{ route('kategori.index') }}" method="GET" class="space-y-4">
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <!-- Search -->
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Pencarian</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Pencarian</label>
                     <div class="relative">
                         <input 
                             type="text" 
                             name="search" 
                             value="{{ request('search') }}"
                             placeholder="Cari kode atau nama kategori..." 
-                            class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all outline-none"
+                            class="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
                         >
-                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </div>
@@ -99,10 +99,10 @@
 
                 <!-- Status Filter -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Status</label>
                     <select 
                         name="status" 
-                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all outline-none"
+                        class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     >
                         <option value="">Semua Status</option>
                         <option value="aktif" {{ request('status') == 'aktif' ? 'selected' : '' }}>Aktif</option>
@@ -112,10 +112,10 @@
             </div>
 
             <!-- Action Buttons -->
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 flex-wrap">
                 <button 
                     type="submit" 
-                    class="bg-blue-500 text-white px-6 py-2.5 rounded-lg hover:bg-blue-600 transition-colors font-medium flex items-center gap-2"
+                    class="bg-blue-500 dark:bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors font-medium flex items-center gap-2"
                 >
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -126,7 +126,7 @@
                 @if(request()->hasAny(['search', 'status']))
                 <a 
                     href="{{ route('kategori.index') }}" 
-                    class="bg-gray-100 text-gray-700 px-6 py-2.5 rounded-lg hover:bg-gray-200 transition-colors font-medium flex items-center gap-2"
+                    class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors font-medium flex items-center gap-2"
                 >
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -151,7 +151,7 @@
     </div>
 
     <!-- Kategori Table -->
-    <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors duration-200">
         
         <!-- Table Header -->
         <div class="bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-4">
@@ -167,33 +167,33 @@
         <!-- Table Content -->
         <div class="overflow-x-auto">
             <table class="w-full">
-                <thead class="bg-gray-50 border-b border-gray-200">
+                <thead class="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-600">
                     <tr>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider w-40">Kode</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Nama Kategori</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Deskripsi</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider w-32">Status</th>
-                        <th class="px-6 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider w-48">Aksi</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider w-40">Kode</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Nama Kategori</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Deskripsi</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider w-32">Status</th>
+                        <th class="px-6 py-4 text-center text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider w-48">Aksi</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
+                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                     @forelse($kategoris as $item)
-                    <tr class="hover:bg-gray-50 transition-colors">
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                         <!-- Kode -->
                         <td class="px-6 py-4">
-                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-700">
                                 {{ $item->kode_kategori }}
                             </span>
                         </td>
 
                         <!-- Nama Kategori -->
                         <td class="px-6 py-4">
-                            <p class="text-sm font-bold text-gray-800">{{ $item->nama_kategori }}</p>
+                            <p class="text-sm font-bold text-gray-800 dark:text-white">{{ $item->nama_kategori }}</p>
                         </td>
 
                         <!-- Deskripsi -->
                         <td class="px-6 py-4">
-                            <p class="text-sm text-gray-600">{{ $item->deskripsi_singkat }}</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">{{ $item->deskripsi_singkat }}</p>
                         </td>
 
                         <!-- Status -->
@@ -202,10 +202,10 @@
                                 @csrf
                                 <button 
                                     type="submit"
-                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all {{ $item->is_active ? 'bg-green-50 text-green-700 hover:bg-green-100' : 'bg-red-50 text-red-700 hover:bg-red-100' }}"
+                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all {{ $item->is_active ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-900/50' : 'bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/50' }}"
                                     title="Klik untuk mengubah status"
                                 >
-                                    <span class="w-2 h-2 rounded-full {{ $item->is_active ? 'bg-green-500' : 'bg-red-500' }}"></span>
+                                    <span class="w-2 h-2 rounded-full {{ $item->is_active ? 'bg-green-500 dark:bg-green-400' : 'bg-red-500 dark:bg-red-400' }}"></span>
                                     {{ $item->status_text }}
                                 </button>
                             </form>
@@ -218,7 +218,7 @@
                                 <!-- View Button -->
                                 <a 
                                     href="{{ route('kategori.show', $item) }}" 
-                                    class="text-blue-600 hover:text-blue-800 p-1.5 hover:bg-blue-50 rounded transition-colors"
+                                    class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 p-1.5 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded transition-colors"
                                     title="Detail"
                                 >
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,7 +230,7 @@
                                 <!-- Edit Button -->
                                 <a 
                                     href="{{ route('kategori.edit', $item) }}" 
-                                    class="text-emerald-600 hover:text-emerald-800 p-1.5 hover:bg-emerald-50 rounded transition-colors"
+                                    class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 p-1.5 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded transition-colors"
                                     title="Edit"
                                 >
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,7 +244,7 @@
                                     @method('DELETE')
                                     <button 
                                         type="submit" 
-                                        class="text-red-600 hover:text-red-800 p-1.5 hover:bg-red-50 rounded transition-colors"
+                                        class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 p-1.5 hover:bg-red-50 dark:hover:bg-red-900/30 rounded transition-colors"
                                         title="Hapus"
                                         onclick="return confirm('Yakin ingin menghapus kategori ini?')"
                                     >
@@ -259,11 +259,11 @@
                     @empty
                     <tr>
                         <td colspan="5" class="px-6 py-12 text-center">
-                            <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
                             </svg>
-                            <p class="text-gray-500 font-medium">Tidak ada data kategori</p>
-                            <p class="text-gray-400 text-sm mt-1">Silakan tambah kategori baru</p>
+                            <p class="text-gray-500 dark:text-gray-400 font-medium">Tidak ada data kategori</p>
+                            <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">Silakan tambah kategori baru</p>
                         </td>
                     </tr>
                     @endforelse
@@ -273,7 +273,7 @@
 
         <!-- Pagination -->
         @if($kategoris->hasPages())
-        <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
+        <div class="bg-gray-50 dark:bg-gray-700/50 px-6 py-4 border-t border-gray-200 dark:border-gray-600">
             {{ $kategoris->links() }}
         </div>
         @endif
