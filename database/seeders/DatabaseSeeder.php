@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             NarasumberSeeder::class,
             KategoriSeeder::class,
             ProgramSeeder::class,
+            KontenSiaranSeeder::class,
         ]);
     }
 }
