@@ -67,7 +67,7 @@ class ProgramController extends Controller
      */
     public function show(Program $program)
     {
-        $program->load(['kategori', 'narasumbers']);
+        $program->load(['kategori']);
         return view('pages.program.show', compact('program'));
     }
 

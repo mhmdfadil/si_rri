@@ -65,10 +65,9 @@ class Program extends Model
      */
     public function narasumbers()
     {
-        return $this->belongsToMany(Narasumber::class, 'program_narasumber', 'program_id', 'narasumber_id')
-                    ->withPivot('peran', 'honor', 'catatan')
-                    ->withTimestamps();
+        return $this->hasMany(Narasumber::class);
     }
+
 
     /**
      * Scope untuk program aktif

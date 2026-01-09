@@ -91,10 +91,6 @@
                         <span class="text-sm text-gray-600">Durasi</span>
                         <span class="text-sm font-semibold text-gray-800">{{ $program->durasi_formatted }}</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-gray-600">Narasumber</span>
-                        <span class="text-sm font-semibold text-gray-800">{{ $program->countNarasumbers() }} orang</span>
-                    </div>
                 </div>
 
                 <!-- Action Buttons -->
@@ -226,48 +222,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Narasumber -->
-            @if($program->narasumbers->count() > 0)
-            <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-                <div class="bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-4">
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
-                        Daftar Narasumber
-                    </h2>
-                    <p class="text-emerald-50 text-sm mt-1">{{ $program->narasumbers->count() }} narasumber</p>
-                </div>
-
-                <div class="p-6">
-                    <div class="space-y-3">
-                        @foreach($program->narasumbers as $narasumber)
-                        <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                            <img 
-                                src="{{ $narasumber->foto_profil_url }}" 
-                                alt="{{ $narasumber->nama_lengkap }}"
-                                class="w-12 h-12 rounded-full object-cover border-2 border-emerald-200"
-                            >
-                            <div class="flex-1">
-                                <p class="text-sm font-bold text-gray-800">{{ $narasumber->nama_lengkap_with_gelar }}</p>
-                                <p class="text-xs text-gray-600">{{ $narasumber->bidang_keahlian }}</p>
-                            </div>
-                            <a 
-                                href="{{ route('narasumber.show', $narasumber) }}" 
-                                class="text-emerald-600 hover:text-emerald-800 p-2 hover:bg-emerald-50 rounded transition-colors"
-                                title="Lihat Detail"
-                            >
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            @endif
 
             <!-- Informasi Sistem -->
             <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
