@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NarasumberController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProgramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('kategori', KategoriController::class);
     Route::post('kategori/{kategori}/toggle-status', [KategoriController::class, 'toggleStatus'])
         ->name('kategori.toggle-status');
+
+    // Program Routes
+    Route::resource('program', ProgramController::class);
+    Route::post('program/{program}/change-status', [ProgramController::class, 'changeStatus'])
+        ->name('program.change-status');
     
     // Logout
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
