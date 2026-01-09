@@ -5,7 +5,7 @@
 @section('page-subtitle', 'Perbarui data program')
 
 @section('content')
-<div class="max-w-4xl mx-auto">
+<div class="max-w-full mx-auto">
     
     <!-- Back Button -->
     <div class="mb-6">
