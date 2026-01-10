@@ -26,7 +26,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Laporan Konten Siaran -->
-        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all group">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition-all group">
             <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-6">
                 <div class="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,20 +38,20 @@
             </div>
             <div class="p-6">
                 <ul class="space-y-3 mb-6">
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Filter berdasarkan tanggal, status, program
                     </li>
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Export ke Excel, PDF, PDF dengan Kop
                     </li>
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Statistik lengkap konten siaran
@@ -67,7 +67,7 @@
         </div>
 
         <!-- Laporan Narasumber -->
-        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all group">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition-all group">
             <div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-6">
                 <div class="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,20 +79,20 @@
             </div>
             <div class="p-6">
                 <ul class="space-y-3 mb-6">
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Data lengkap narasumber aktif
                     </li>
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Statistik jumlah konten per narasumber
                     </li>
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Filter berdasarkan status & keahlian
@@ -108,7 +108,7 @@
         </div>
 
         <!-- Laporan Program -->
-        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all group">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition-all group">
             <div class="bg-gradient-to-br from-purple-500 to-pink-600 p-6">
                 <div class="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,20 +120,20 @@
             </div>
             <div class="p-6">
                 <ul class="space-y-3 mb-6">
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Data program dan kategori
                     </li>
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Jumlah konten per program
                     </li>
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Produktivitas program siaran
@@ -151,14 +151,14 @@
     </div>
 
     <!-- Info Box -->
-    <div class="mt-8 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+    <div class="mt-8 bg-blue-50 dark:bg-blue-900/70 border-l-4 border-blue-500 dark:border-blue-400 p-6 rounded-lg transition-colors">
         <div class="flex items-start gap-4">
-            <svg class="w-6 h-6 text-blue-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-blue-500 dark:text-blue-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
             <div>
-                <h3 class="font-bold text-blue-900 mb-2">Informasi Export Laporan</h3>
-                <ul class="space-y-1 text-sm text-blue-800">
+                <h3 class="font-bold text-blue-900 dark:text-blue-200 mb-2">Informasi Export Laporan</h3>
+                <ul class="space-y-1 text-sm text-blue-800 dark:text-blue-300">
                     <li>• <strong>Excel (.xlsx)</strong>: Format tabel lengkap dengan semua kolom data</li>
                     <li>• <strong>PDF Normal</strong>: Laporan format standar tanpa kop surat</li>
                     <li>• <strong>PDF dengan Kop</strong>: Laporan resmi dengan kop surat RRI Lhokseumawe</li>
