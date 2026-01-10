@@ -174,4 +174,32 @@ class Narasumber extends Model
         return asset('images/default-avatar.png');
     }
 
+        
+    /**
+     * Relasi ke model KontenSiaran (many-to-many)
+     */
+    public function kontenSiarans()
+    {
+        return $this->belongsToMany(KontenSiaran::class, 'konten_siaran_narasumber', 'narasumber_id', 'konten_siaran_id')
+                    ->withPivot('peran', 'durasi_tampil', 'honor', 'catatan')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Get total konten siaran narasumber
+     */
+    public function getTotalKontenAttribute()
+    {
+        return $this->kontenSiarans()->count();
+    }
+
+    /**
+     * Get total honor narasumber
+     */
+    public function getTotalHonorAttribute()
+    {
+        return $this->kontenSiarans()->sum('konten_siaran_narasumber.honor');
+    }
+
+
 }

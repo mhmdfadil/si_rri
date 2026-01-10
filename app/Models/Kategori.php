@@ -163,4 +163,21 @@ class Kategori extends Model
 
         return substr($this->deskripsi, 0, $limit) . '...';
     }
+
+    /**
+     * Relasi ke model KontenSiaran
+     */
+    public function kontenSiarans()
+    {
+        return $this->hasMany(KontenSiaran::class, 'kategori_id');
+    }
+
+    /**
+     * Get total konten siaran kategori
+     */
+    public function getTotalKontenAttribute()
+    {
+        return $this->kontenSiarans()->count();
+    }
+
 }

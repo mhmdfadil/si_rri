@@ -312,4 +312,20 @@ class Program extends Model
     {
         return $this->narasumbers()->sum('honor');
     }
+
+    /**
+     * Relasi ke model KontenSiaran
+     */
+    public function kontenSiarans()
+    {
+        return $this->hasMany(KontenSiaran::class, 'program_id');
+    }
+
+    /**
+     * Get total konten siaran program
+     */
+    public function getTotalKontenAttribute()
+    {
+        return $this->kontenSiarans()->count();
+    }
 }

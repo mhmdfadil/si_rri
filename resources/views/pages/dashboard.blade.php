@@ -2,199 +2,502 @@
 
 @section('title', 'Dashboard')
 @section('page-title', 'Dashboard Overview')
-@section('page-subtitle', 'Selamat datang di sistem database RRI')
+@section('page-subtitle', 'Sistem Informasi Manajemen Konten Siaran RRI Lhokseumawe')
 
 @section('content')
 <div class="max-w-full mx-auto">
     
-    <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <!-- Welcome Banner -->
+    <div class="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-xl shadow-lg p-8 mb-6 text-white">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold mb-2">Selamat Datang, {{ auth()->user()->name }}! 👋</h1>
+                <p class="text-blue-100">{{ now()->format('l, d F Y') }}</p>
+                <p class="text-blue-50 text-sm mt-1">Kelola konten siaran Anda dengan mudah dan efisien</p>
+            </div>
+            <div class="hidden lg:block">
+                <svg class="w-32 h-32 text-white opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"></path>
+                    <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         
-        <!-- Card 1 -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all">
-            <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
+        <!-- Total Konten -->
+        <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-600 mb-1">Total Konten</p>
+                    <p class="text-3xl font-bold text-gray-900">{{ number_format($stats['total_konten']) }}</p>
+                    <p class="text-xs text-gray-500 mt-2">Semua konten siaran</p>
                 </div>
-                <span class="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-full">+12%</span>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-1">256</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Total Narasumber</p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all">
-            <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                </div>
-                <span class="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded-full">+8%</span>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-1">1,429</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Konten Siaran</p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all">
-            <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
                     </svg>
                 </div>
-                <span class="text-xs font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 px-2 py-1 rounded-full">Active</span>
             </div>
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-1">24</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Program Siaran</p>
         </div>
 
-        <!-- Card 4 -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all">
-            <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+        <!-- Total Narasumber -->
+        <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-600 mb-1">Total Narasumber</p>
+                    <p class="text-3xl font-bold text-gray-900">{{ number_format($stats['total_narasumber']) }}</p>
+                    <p class="text-xs text-green-600 mt-2">{{ $stats['narasumber_aktif'] }} aktif</p>
+                </div>
+                <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                     </svg>
                 </div>
-                <span class="text-xs font-medium text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 px-2 py-1 rounded-full">+18%</span>
             </div>
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-1">89.2%</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Engagement Rate</p>
+        </div>
+
+        <!-- Total Program -->
+        <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-600 mb-1">Total Program</p>
+                    <p class="text-3xl font-bold text-gray-900">{{ number_format($stats['total_program']) }}</p>
+                    <p class="text-xs text-purple-600 mt-2">{{ $stats['program_aktif'] }} aktif</p>
+                </div>
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Kategori -->
+        <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-600 mb-1">Total Kategori</p>
+                    <p class="text-3xl font-bold text-gray-900">{{ number_format($stats['total_kategori']) }}</p>
+                    <p class="text-xs text-gray-500 mt-2">Kategori konten</p>
+                </div>
+                <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                    </svg>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Content Section -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-xs text-blue-700 font-medium">Hari Ini</p>
+                    <p class="text-2xl font-bold text-blue-900">{{ $stats['konten_hari_ini'] }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-xs text-yellow-700 font-medium">Siap Tayang</p>
+                    <p class="text-2xl font-bold text-yellow-900">{{ $stats['konten_siap_tayang'] }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-xs text-green-700 font-medium">Tayang</p>
+                    <p class="text-2xl font-bold text-green-900">{{ $stats['konten_tayang'] }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-xs text-purple-700 font-medium">Diajukan</p>
+                    <p class="text-2xl font-bold text-purple-900">{{ $stats['konten_diajukan'] }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gray-500 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-700 font-medium">Draft</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $stats['konten_draft'] }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         
-        <!-- Recent Activity -->
-        <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-lg font-bold text-gray-800 dark:text-white">Aktivitas Terbaru</h2>
-                <button class="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-medium">Lihat Semua</button>
+        <!-- Konten Hari Ini -->
+        <div class="lg:col-span-2 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-4 flex items-center justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        Jadwal Siaran Hari Ini
+                    </h2>
+                    <p class="text-blue-50 text-sm mt-1">{{ $kontenHariIni->count() }} konten dijadwalkan</p>
+                </div>
+                <a href="{{ route('konten-siaran.index', ['filter_tanggal' => 'hari_ini']) }}" class="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors font-medium text-sm">
+                    Lihat Semua
+                </a>
             </div>
-            
-            <div class="space-y-4">
-                <!-- Activity Item -->
-                <div class="flex items-start gap-4 p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors">
-                    <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                        <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <p class="text-sm font-medium text-gray-800 dark:text-gray-200">Program siaran selesai</p>
-                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Berita Siang - 12:00 WIB</p>
-                        <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">1 hari yang lalu</p>
-                    </div>
-                </div>
-
-                <!-- Activity Item 2 -->
-                <div class="flex items-start gap-4 p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors">
-                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                        <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <p class="text-sm font-medium text-gray-800 dark:text-gray-200">Narasumber baru ditambahkan</p>
-                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Dr. Ahmad Fauzi - Kesehatan</p>
-                        <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">2 hari yang lalu</p>
-                    </div>
-                </div>
-
-                <!-- Activity Item 3 -->
-                <div class="flex items-start gap-4 p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors">
-                    <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <p class="text-sm font-medium text-gray-800 dark:text-gray-200">Konten diupdate</p>
-                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Dialog Pagi - Episode #125</p>
-                        <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">3 hari yang lalu</p>
+            <div class="divide-y divide-gray-200 max-h-96 overflow-y-auto">
+                @forelse($kontenHariIni as $konten)
+                <div class="p-4 hover:bg-gray-50 transition-colors">
+                    <div class="flex items-start gap-4">
+                        <div class="text-center bg-blue-50 rounded-lg p-3 flex-shrink-0">
+                            <p class="text-xs text-blue-600 font-medium">{{ \Carbon\Carbon::parse($konten->jam_siaran)->format('H:i') }}</p>
+                            <p class="text-xs text-blue-500 mt-1">WIB</p>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-gray-900 text-sm line-clamp-1">{{ $konten->judul }}</h3>
+                            <p class="text-xs text-gray-600 mt-1">{{ $konten->program->nama_program ?? '-' }}</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                @if($konten->tipe_siaran == 'live')
+                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-red-50 text-red-700">
+                                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                    Live
+                                </span>
+                                @endif
+                                <span class="text-xs text-gray-500">{{ $konten->durasi }} menit</span>
+                                @if($konten->narasumbers->count() > 0)
+                                <span class="text-xs text-gray-500">• {{ $konten->narasumbers->count() }} narasumber</span>
+                                @endif
+                            </div>
+                        </div>
+                        <a href="{{ route('konten-siaran.show', $konten) }}" class="text-blue-600 hover:text-blue-800">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
+                @empty
+                <div class="p-12 text-center">
+                    <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <p class="text-gray-500 font-medium">Tidak ada jadwal siaran hari ini</p>
+                </div>
+                @endforelse
             </div>
         </div>
 
-        <!-- Quick Stats -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6">
-            <h2 class="text-lg font-bold text-gray-800 dark:text-white mb-6">Statistik Cepat</h2>
-            
-            <div class="space-y-6">
-                <!-- Stat Item -->
-                <div>
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Narasumber Aktif</span>
-                        <span class="text-sm font-bold text-emerald-600 dark:text-emerald-400">78%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-2 rounded-full" style="width: 78%"></div>
-                    </div>
-                </div>
-
-                <!-- Stat Item -->
-                <div>
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Konten Bulan Ini</span>
-                        <span class="text-sm font-bold text-blue-600 dark:text-blue-400">92%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 rounded-full" style="width: 92%"></div>
-                    </div>
-                </div>
-
-                <!-- Stat Item -->
-                <div>
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Target Program</span>
-                        <span class="text-sm font-bold text-purple-600 dark:text-purple-400">65%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="width: 65%"></div>
-                    </div>
-                </div>
+        <!-- Konten Butuh Persetujuan -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-4">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Butuh Persetujuan
+                </h2>
+                <p class="text-purple-50 text-sm mt-1">{{ $kontenButuhPersetujuan->count() }} konten</p>
             </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                <h3 class="text-sm font-bold text-gray-800 dark:text-white mb-4">Aksi Cepat</h3>
-                <div class="space-y-2">
-                    <button class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-2.5 px-4 rounded-lg font-medium text-sm hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                        </svg>
-                        Tambah Narasumber
-                    </button>
-                    <button class="w-full bg-white dark:bg-gray-700 border-2 border-emerald-200 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 py-2.5 px-4 rounded-lg font-medium text-sm hover:bg-emerald-50 dark:hover:bg-gray-600 transition-all flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                        Buat Konten Baru
-                    </button>
+            <div class="divide-y divide-gray-200 max-h-96 overflow-y-auto">
+                @forelse($kontenButuhPersetujuan as $konten)
+                <div class="p-4 hover:bg-gray-50 transition-colors">
+                    <h3 class="font-bold text-gray-900 text-sm line-clamp-2">{{ $konten->judul }}</h3>
+                    <p class="text-xs text-gray-600 mt-1">{{ $konten->program->nama_program ?? '-' }}</p>
+                    <div class="flex items-center justify-between mt-2">
+                        <span class="text-xs text-gray-500">{{ $konten->tanggal_diajukan->diffForHumans() }}</span>
+                        <a href="{{ route('konten-siaran.show', $konten) }}" class="text-purple-600 hover:text-purple-800 text-xs font-medium">
+                            Review →
+                        </a>
+                    </div>
                 </div>
+                @empty
+                <div class="p-8 text-center">
+                    <svg class="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-gray-500 text-sm">Tidak ada konten yang menunggu persetujuan</p>
+                </div>
+                @endforelse
             </div>
         </div>
     </div>
 
-    <!-- Additional Content Example -->
-    {{-- <div class="mt-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6">
-        <h2 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Area Konten Utama</h2>
-        <div class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-700 dark:to-gray-600 border-2 border-dashed border-emerald-300 dark:border-emerald-700 rounded-xl p-12 text-center">
-            <svg class="w-16 h-16 text-emerald-400 dark:text-emerald-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-            </svg>
-            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Konten Halaman Anda</h3>
-            <p class="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
-                Area ini akan menampilkan konten halaman sesuai dengan menu yang dipilih. 
-                Konten tidak akan melewati batas layout yang telah ditentukan.
-            </p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        
+        <!-- Konten Upcoming -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-4">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Upcoming (7 Hari)
+                </h2>
+                <p class="text-emerald-50 text-sm mt-1">{{ $kontenUpcoming->count() }} konten akan tayang</p>
+            </div>
+            <div class="divide-y divide-gray-200 max-h-80 overflow-y-auto">
+                @forelse($kontenUpcoming as $konten)
+                <div class="p-4 hover:bg-gray-50 transition-colors">
+                    <div class="flex items-start gap-3">
+                        <div class="text-center bg-emerald-50 rounded-lg p-2 flex-shrink-0">
+                            <p class="text-xs text-emerald-600 font-bold">{{ $konten->tanggal_siaran->format('d') }}</p>
+                            <p class="text-xs text-emerald-500">{{ $konten->tanggal_siaran->format('M') }}</p>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-gray-900 text-sm line-clamp-1">{{ $konten->judul }}</h3>
+                            <p class="text-xs text-gray-600 mt-1">{{ $konten->program->nama_program ?? '-' }}</p>
+                            <p class="text-xs text-gray-500 mt-1">{{ \Carbon\Carbon::parse($konten->jam_siaran)->format('H:i') }} WIB</p>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                <div class="p-8 text-center">
+                    <p class="text-gray-500 text-sm">Tidak ada konten upcoming</p>
+                </div>
+                @endforelse
+            </div>
         </div>
-    </div> --}}
+
+        <!-- Narasumber Populer -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                    </svg>
+                    Narasumber Populer
+                </h2>
+            </div>
+            <div class="divide-y divide-gray-200">
+                @forelse($narasumberPopuler as $narasumber)
+                <div class="p-4 hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <img src="{{ $narasumber->foto_profil_url }}" alt="{{ $narasumber->nama_lengkap }}" class="w-12 h-12 rounded-full object-cover border-2 border-orange-200">
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-gray-900 text-sm line-clamp-1">{{ $narasumber->nama_lengkap }}</h3>
+                            <p class="text-xs text-gray-600 mt-0.5">{{ $narasumber->instansi ?? 'Independen' }}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-orange-600">{{ $narasumber->konten_siarans_count }}</p>
+                            <p class="text-xs text-gray-500">konten</p>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                <div class="p-8 text-center">
+                    <p class="text-gray-500 text-sm">Belum ada data</p>
+                </div>
+                @endforelse
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        
+        <!-- Konten per Bulan Chart -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-4">
+                <h2 class="text-lg font-bold text-white">Konten per Bulan (6 Bulan Terakhir)</h2>
+            </div>
+            <div class="p-6">
+                <canvas id="kontenPerBulanChart" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Konten per Status Chart -->
+        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-pink-500 to-rose-500 px-6 py-4">
+                <h2 class="text-lg font-bold text-white">Konten per Status</h2>
+            </div>
+            <div class="p-6">
+                <canvas id="kontenPerStatusChart" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-4">
+            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Aktivitas Terbaru
+            </h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase">Judul</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase">Program</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase">Dibuat Oleh</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase">Waktu</th>
+                        <th class="px-6 py-3 text-center text-xs font-bold text-gray-700 uppercase">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    @forelse($recentActivities as $activity)
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4">
+                            <p class="font-medium text-gray-900 text-sm line-clamp-1">{{ $activity->judul }}</p>
+                            <p class="text-xs text-gray-500">{{ $activity->kode_konten }}</p>
+                        </td>
+                        <td class="px-6 py-4">
+                            <p class="text-sm text-gray-700">{{ $activity->program->nama_program ?? '-' }}</p>
+                        </td>
+                        <td class="px-6 py-4">
+                            @php
+                                $statusColors = [
+                                    'draft' => 'gray',
+                                    'diajukan' => 'blue',
+                                    'disetujui' => 'green',
+                                    'ditolak' => 'red',
+                                    'siap_tayang' => 'yellow',
+                                    'tayang' => 'green',
+                                    'selesai' => 'gray',
+                                ];
+                                $color = $statusColors[$activity->status] ?? 'gray';
+                            @endphp
+                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-{{ $color }}-50 text-{{ $color }}-700">
+                                {{ $activity->status_text }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <p class="text-sm text-gray-700">{{ $activity->pengaju->name ?? '-' }}</p>
+                        </td>
+                        <td class="px-6 py-4">
+                            <p class="text-sm text-gray-700">{{ $activity->created_at->diffForHumans() }}</p>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            <a href="{{ route('konten-siaran.show', $activity) }}" class="text-indigo-600 hover:text-indigo-800">
+                                <svg class="w-5 h-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="6" class="px-6 py-12 text-center">
+                            <p class="text-gray-500">Belum ada aktivitas</p>
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Konten per Bulan Chart
+    const kontenPerBulanCtx = document.getElementById('kontenPerBulanChart').getContext('2d');
+    new Chart(kontenPerBulanCtx, {
+        type: 'line',
+        data: {
+            labels: {!! json_encode(array_column($kontenPerBulan, 'bulan')) !!},
+            datasets: [{
+                label: 'Jumlah Konten',
+                data: {!! json_encode(array_column($kontenPerBulan, 'total')) !!},
+                borderColor: 'rgb(59, 130, 246)',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+
+    // Konten per Status Chart
+    const kontenPerStatusCtx = document.getElementById('kontenPerStatusChart').getContext('2d');
+    new Chart(kontenPerStatusCtx, {
+        type: 'doughnut',
+        data: {
+            labels: {!! json_encode(array_column($kontenPerStatus, 'status')) !!},
+            datasets: [{
+                data: {!! json_encode(array_column($kontenPerStatus, 'total')) !!},
+                backgroundColor: [
+                    'rgba(156, 163, 175, 0.8)', // gray - draft
+                    'rgba(59, 130, 246, 0.8)',  // blue - diajukan
+                    'rgba(251, 191, 36, 0.8)',  // yellow - siap_tayang
+                    'rgba(34, 197, 94, 0.8)',   // green - tayang
+                    'rgba(107, 114, 128, 0.8)', // gray - selesai
+                ],
+                borderWidth: 2,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                }
+            }
+        }
+    });
+</script>
+
 @endsection
