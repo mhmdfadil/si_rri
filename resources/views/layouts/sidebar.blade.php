@@ -94,9 +94,11 @@
         <div class="border-t dark:border-gray-700 my-3"></div>
 
         <!-- Laporan -->
-        <a href="#"
+        <a href="{{ route('laporan.index') }}"
             class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
-                   text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-gray-700 transition-all">
+                   {{ request()->routeIs('laporan.*')
+                        ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-gray-700' }} transition-all group">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -131,7 +133,7 @@
         </a>
 
         <!-- Pengaturan -->
-        <a href="#"
+        {{-- <a href="#"
             class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
                    text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-gray-700 transition-all">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,7 +143,7 @@
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
             <span>Pengaturan Sistem</span>
-        </a>
+        </a> --}}
 
     </nav>
 
