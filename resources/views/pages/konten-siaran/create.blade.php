@@ -281,18 +281,16 @@
     </form>
 </div>
 
-@push('scripts')
 <script>
-function previewThumbnail(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('thumbnailPreview').innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover">`;
+    function previewThumbnail(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('thumbnailPreview').innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover">`;
+            }
+            reader.readAsDataURL(file);
         }
-        reader.readAsDataURL(file);
     }
-}
 </script>
-@endpush
 @endsection
