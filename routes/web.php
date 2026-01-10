@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\NarasumberController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\KontenSiaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,27 @@ Route::middleware('auth')->group(function () {
     Route::resource('program', ProgramController::class);
     Route::post('program/{program}/change-status', [ProgramController::class, 'changeStatus'])
         ->name('program.change-status');
+
+    // Konten Siaran Routes
+    Route::resource('konten-siaran', KontenSiaranController::class);
+    
+    // Additional routes untuk konten siaran
+    Route::prefix('konten-siaran')->name('konten-siaran.')->group(function () {
+        // Manage narasumber dalam konten
+        Route::get('{kontenSiaran}/narasumber', [KontenSiaranController::class, 'manageNarasumber'])->name('manage-narasumber');
+        Route::post('{kontenSiaran}/narasumber', [KontenSiaranController::class, 'storeNarasumber'])->name('store-narasumber');
+        Route::delete('{kontenSiaran}/narasumber/{narasumber}', [KontenSiaranController::class, 'removeNarasumber'])->name('remove-narasumber');
+        
+        // Workflow status
+        Route::post('{kontenSiaran}/ajukan', [KontenSiaranController::class, 'ajukan'])->name('ajukan');
+        Route::post('{kontenSiaran}/setujui', [KontenSiaranController::class, 'setujui'])->name('setujui');
+        Route::post('{kontenSiaran}/tolak', [KontenSiaranController::class, 'tolak'])->name('tolak');
+        Route::post('{kontenSiaran}/siapkan-tayang', [KontenSiaranController::class, 'siapkanTayang'])->name('siapkan-tayang');
+        Route::post('{kontenSiaran}/mulai-tayang', [KontenSiaranController::class, 'mulaiTayang'])->name('mulai-tayang');
+        Route::post('{kontenSiaran}/selesai-tayang', [KontenSiaranController::class, 'selesaiTayang'])->name('selesai-tayang');
+        Route::post('{kontenSiaran}/batalkan', [KontenSiaranController::class, 'batalkan'])->name('batalkan');
+        Route::post('{kontenSiaran}/arsipkan', [KontenSiaranController::class, 'arsipkan'])->name('arsipkan');
+    });
     
     // Logout
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
