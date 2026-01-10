@@ -10,7 +10,7 @@
                 </p>
             </div>
             
-            <div class="flex items-center gap-6">
+            {{-- <div class="flex items-center gap-6">
                 <a href="#" class="text-xs text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">
                     Bantuan
                 </a>
@@ -20,7 +20,7 @@
                 <a href="#" class="text-xs text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">
                     Kontak
                 </a>
-            </div>
+            </div> --}}
             
             <div class="flex items-center gap-2">
                 <div class="flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1.5 rounded-full">
