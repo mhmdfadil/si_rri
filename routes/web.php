@@ -10,6 +10,7 @@ use App\Http\Controllers\NarasumberController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\KontenSiaranController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,25 @@ Route::middleware('auth')->group(function () {
         Route::post('{kontenSiaran}/selesai-tayang', [KontenSiaranController::class, 'selesaiTayang'])->name('selesai-tayang');
         Route::post('{kontenSiaran}/batalkan', [KontenSiaranController::class, 'batalkan'])->name('batalkan');
         Route::post('{kontenSiaran}/arsipkan', [KontenSiaranController::class, 'arsipkan'])->name('arsipkan');
+    });
+
+    // Laporan Routes
+    Route::prefix('laporan')->name('laporan.')->group(function () {
+        // Main laporan pages
+        Route::get('/', [LaporanController::class, 'index'])->name('index');
+        Route::get('/konten-siaran', [LaporanController::class, 'kontenSiaran'])->name('konten-siaran');
+        Route::get('/narasumber', [LaporanController::class, 'narasumber'])->name('narasumber');
+        Route::get('/program', [LaporanController::class, 'program'])->name('program');
+        
+        // Export Konten Siaran
+        Route::get('/export/konten-siaran/excel', [LaporanController::class, 'exportKontenExcel'])->name('export-konten-excel');
+        Route::get('/export/konten-siaran/pdf', [LaporanController::class, 'exportKontenPDF'])->name('export-konten-pdf');
+        Route::get('/export/konten-siaran/pdf-kop', [LaporanController::class, 'exportKontenPDFKop'])->name('export-konten-pdf-kop');
+        
+        // Export Narasumber
+        Route::get('/export/narasumber/excel', [LaporanController::class, 'exportNarasumberExcel'])->name('export-narasumber-excel');
+        Route::get('/export/narasumber/pdf', [LaporanController::class, 'exportNarasumberPDF'])->name('export-narasumber-pdf');
+        Route::get('/export/narasumber/pdf-kop', [LaporanController::class, 'exportNarasumberPDFKop'])->name('export-narasumber-pdf-kop');
     });
     
     // Logout
