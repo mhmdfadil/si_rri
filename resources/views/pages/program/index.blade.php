@@ -9,34 +9,34 @@
     
     <!-- Success Message -->
     @if(session('success'))
-    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-6 rounded-lg">
+    <div class="bg-emerald-50 dark:bg-emerald-900/30 border-l-4 border-emerald-500 dark:border-emerald-400 p-4 mb-6 rounded-lg transition-colors duration-200">
         <div class="flex items-center">
-            <svg class="w-5 h-5 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-emerald-500 dark:text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <p class="text-emerald-700 font-medium">{{ session('success') }}</p>
+            <p class="text-emerald-700 dark:text-emerald-300 font-medium">{{ session('success') }}</p>
         </div>
     </div>
     @endif
 
     @if(session('error'))
-    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-lg">
+    <div class="bg-red-50 dark:bg-red-900/30 border-l-4 border-red-500 dark:border-red-400 p-4 mb-6 rounded-lg transition-colors duration-200">
         <div class="flex items-center">
-            <svg class="w-5 h-5 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-red-500 dark:text-red-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
-            <p class="text-red-700 font-medium">{{ session('error') }}</p>
+            <p class="text-red-700 dark:text-red-300 font-medium">{{ session('error') }}</p>
         </div>
     </div>
     @endif
 
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-        <div class="bg-white rounded-xl p-4 shadow-lg border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-200">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Total Program</p>
-                    <p class="text-2xl font-bold text-gray-800 mt-1">{{ \App\Models\Program::count() }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Total Program</p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-white mt-1">{{ \App\Models\Program::count() }}</p>
                 </div>
                 <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,11 +46,11 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-xl p-4 shadow-lg border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-200">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Draft</p>
-                    <p class="text-2xl font-bold text-gray-600 mt-1">{{ \App\Models\Program::draft()->count() }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Draft</p>
+                    <p class="text-2xl font-bold text-gray-600 dark:text-gray-400 mt-1">{{ \App\Models\Program::draft()->count() }}</p>
                 </div>
                 <div class="w-12 h-12 bg-gradient-to-br from-gray-500 to-gray-600 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,11 +60,11 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-xl p-4 shadow-lg border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-200">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Aktif</p>
-                    <p class="text-2xl font-bold text-green-600 mt-1">{{ \App\Models\Program::aktif()->count() }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Aktif</p>
+                    <p class="text-2xl font-bold text-green-600 dark:text-green-400 mt-1">{{ \App\Models\Program::aktif()->count() }}</p>
                 </div>
                 <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,11 +74,11 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-xl p-4 shadow-lg border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-200">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Selesai</p>
-                    <p class="text-2xl font-bold text-blue-600 mt-1">{{ \App\Models\Program::selesai()->count() }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Selesai</p>
+                    <p class="text-2xl font-bold text-blue-600 dark:text-blue-400 mt-1">{{ \App\Models\Program::selesai()->count() }}</p>
                 </div>
                 <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,11 +88,11 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-xl p-4 shadow-lg border border-gray-100">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-200">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600">Nonaktif/Batal</p>
-                    <p class="text-2xl font-bold text-red-600 mt-1">{{ \App\Models\Program::where('status', 'nonaktif')->orWhere('status', 'dibatalkan')->count() }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Nonaktif/Batal</p>
+                    <p class="text-2xl font-bold text-red-600 dark:text-red-400 mt-1">{{ \App\Models\Program::where('status', 'nonaktif')->orWhere('status', 'dibatalkan')->count() }}</p>
                 </div>
                 <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,22 +104,22 @@
     </div>
 
     <!-- Filter & Search Section -->
-    <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6 mb-6">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 mb-6 transition-colors duration-200">
         <form action="{{ route('program.index') }}" method="GET" class="space-y-4">
             
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <!-- Search -->
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Pencarian</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Pencarian</label>
                     <div class="relative">
                         <input 
                             type="text" 
                             name="search" 
                             value="{{ request('search') }}"
                             placeholder="Cari nama, kode program, atau kategori..." 
-                            class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-100 transition-all outline-none"
+                            class="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-100 dark:focus:ring-purple-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
                         >
-                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </div>
@@ -127,10 +127,10 @@
 
                 <!-- Kategori Filter -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Kategori</label>
                     <select 
                         name="kategori_id" 
-                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-100 transition-all outline-none"
+                        class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-100 dark:focus:ring-purple-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     >
                         <option value="">Semua Kategori</option>
                         @foreach($kategoris as $kategori)
@@ -143,10 +143,10 @@
 
                 <!-- Status Filter -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Status</label>
                     <select 
                         name="status" 
-                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-100 transition-all outline-none"
+                        class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-100 dark:focus:ring-purple-900 transition-all outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     >
                         <option value="">Semua Status</option>
                         @foreach(\App\Models\Program::STATUS_OPTIONS as $key => $value)
@@ -157,10 +157,10 @@
             </div>
 
             <!-- Action Buttons -->
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 flex-wrap">
                 <button 
                     type="submit" 
-                    class="bg-purple-500 text-white px-6 py-2.5 rounded-lg hover:bg-purple-600 transition-colors font-medium flex items-center gap-2"
+                    class="bg-purple-500 dark:bg-purple-600 text-white px-6 py-2.5 rounded-lg hover:bg-purple-600 dark:hover:bg-purple-700 transition-colors font-medium flex items-center gap-2"
                 >
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -171,7 +171,7 @@
                 @if(request()->hasAny(['search', 'kategori_id', 'status']))
                 <a 
                     href="{{ route('program.index') }}" 
-                    class="bg-gray-100 text-gray-700 px-6 py-2.5 rounded-lg hover:bg-gray-200 transition-colors font-medium flex items-center gap-2"
+                    class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors font-medium flex items-center gap-2"
                 >
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -196,7 +196,7 @@
     </div>
 
     <!-- Program Table -->
-    <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors duration-200">
         
         <!-- Table Header -->
         <div class="bg-gradient-to-r from-purple-500 to-indigo-500 px-6 py-4">
@@ -212,45 +212,45 @@
         <!-- Table Content -->
         <div class="overflow-x-auto">
             <table class="w-full">
-                <thead class="bg-gray-50 border-b border-gray-200">
+                <thead class="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-600">
                     <tr>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider w-40">Kode</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Program</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Kategori</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider w-32">Durasi</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider w-32">Status</th>
-                        <th class="px-6 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider w-48">Aksi</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider w-40">Kode</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Program</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Kategori</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider w-32">Durasi</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider w-32">Status</th>
+                        <th class="px-6 py-4 text-center text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider w-48">Aksi</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
+                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                     @forelse($programs as $item)
-                    <tr class="hover:bg-gray-50 transition-colors">
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                         <!-- Kode -->
                         <td class="px-6 py-4">
-                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-700">
                                 {{ $item->kode_program }}
                             </span>
                         </td>
 
                         <!-- Program -->
                         <td class="px-6 py-4">
-                            <p class="text-sm font-bold text-gray-800">{{ $item->nama_program }}</p>
+                            <p class="text-sm font-bold text-gray-800 dark:text-white">{{ $item->nama_program }}</p>
                             @if($item->deskripsi)
-                                <p class="text-xs text-gray-600 mt-1">{{ $item->deskripsi_singkat }}</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">{{ $item->deskripsi_singkat }}</p>
                             @endif
                         </td>
 
                         <!-- Kategori -->
                         <td class="px-6 py-4">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">
                                 {{ $item->nama_kategori }}
                             </span>
                         </td>
 
                         <!-- Durasi -->
                         <td class="px-6 py-4">
-                            <div class="flex items-center gap-1 text-sm text-gray-700">
-                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="flex items-center gap-1 text-sm text-gray-700 dark:text-gray-300">
+                                <svg class="w-4 h-4 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                                 {{ $item->durasi_formatted }}
@@ -260,28 +260,28 @@
                         <!-- Status -->
                         <td class="px-6 py-4">
                             @if($item->status == 'draft')
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-gray-50 text-gray-700">
-                                    <span class="w-2 h-2 bg-gray-500 rounded-full"></span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                                    <span class="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full"></span>
                                     Draft
                                 </span>
                             @elseif($item->status == 'aktif')
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400">
+                                    <span class="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full"></span>
                                     Aktif
                                 </span>
                             @elseif($item->status == 'nonaktif')
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700">
-                                    <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400">
+                                    <span class="w-2 h-2 bg-red-500 dark:bg-red-400 rounded-full"></span>
                                     Nonaktif
                                 </span>
                             @elseif($item->status == 'selesai')
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
-                                    <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">
+                                    <span class="w-2 h-2 bg-blue-500 dark:bg-blue-400 rounded-full"></span>
                                     Selesai
                                 </span>
                             @else
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-700">
-                                    <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400">
+                                    <span class="w-2 h-2 bg-orange-500 dark:bg-orange-400 rounded-full"></span>
                                     Dibatalkan
                                 </span>
                             @endif
@@ -294,7 +294,7 @@
                                 <!-- View Button -->
                                 <a 
                                     href="{{ route('program.show', $item) }}" 
-                                    class="text-blue-600 hover:text-blue-800 p-1.5 hover:bg-blue-50 rounded transition-colors"
+                                    class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 p-1.5 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded transition-colors"
                                     title="Detail"
                                 >
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -306,7 +306,7 @@
                                 <!-- Edit Button -->
                                 <a 
                                     href="{{ route('program.edit', $item) }}" 
-                                    class="text-emerald-600 hover:text-emerald-800 p-1.5 hover:bg-emerald-50 rounded transition-colors"
+                                    class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 p-1.5 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 rounded transition-colors"
                                     title="Edit"
                                 >
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -320,7 +320,7 @@
                                     @method('DELETE')
                                     <button 
                                         type="submit" 
-                                        class="text-red-600 hover:text-red-800 p-1.5 hover:bg-red-50 rounded transition-colors"
+                                        class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 p-1.5 hover:bg-red-50 dark:hover:bg-red-900/30 rounded transition-colors"
                                         title="Hapus"
                                         onclick="return confirm('Yakin ingin menghapus program ini?')"
                                     >
@@ -335,11 +335,11 @@
                     @empty
                     <tr>
                         <td colspan="6" class="px-6 py-12 text-center">
-                            <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                             </svg>
-                            <p class="text-gray-500 font-medium">Tidak ada data program</p>
-                            <p class="text-gray-400 text-sm mt-1">Silakan tambah program baru</p>
+                            <p class="text-gray-500 dark:text-gray-400 font-medium">Tidak ada data program</p>
+                            <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">Silakan tambah program baru</p>
                         </td>
                     </tr>
                     @endforelse
@@ -349,7 +349,7 @@
 
         <!-- Pagination -->
         @if($programs->hasPages())
-        <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
+        <div class="bg-gray-50 dark:bg-gray-700/50 px-6 py-4 border-t border-gray-200 dark:border-gray-600">
             {{ $programs->links() }}
         </div>
         @endif
