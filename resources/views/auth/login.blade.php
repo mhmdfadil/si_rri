@@ -120,7 +120,7 @@
                     
                     <!-- Subtitle -->
                     <p class="text-2xl font-semibold mb-6 text-white/95">
-                        Sistem Database Narasumber
+                        SIDAKORA
                     </p>
                     
                     <!-- Description -->
@@ -214,7 +214,7 @@
                                 name="email"
                                 class="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 transition-all duration-300 outline-none text-gray-800 placeholder-gray-400"
                                 placeholder="Masukkan email atau username"
-                                required
+                                
                             />
                         </div>
                     </div>
@@ -236,7 +236,7 @@
                                 name="password"
                                 class="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 transition-all duration-300 outline-none text-gray-800 placeholder-gray-400"
                                 placeholder="Masukkan password"
-                                required
+                                
                             />
                             <button
                                 type="button"

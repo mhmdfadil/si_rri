@@ -6,7 +6,7 @@
                     © {{ date('Y') }} Radio Republik Indonesia Lhokseumawe
                 </p>
                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    Sistem Database Narasumber v1.0
+                    SIDAKORA v1.0
                 </p>
             </div>
             

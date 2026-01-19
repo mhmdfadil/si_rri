@@ -147,15 +147,26 @@
 
     </nav>
 
-    <!-- Footer -->
+   <!-- Footer -->
     <div class="p-4 border-t dark:border-gray-700">
         <div class="bg-emerald-50 dark:bg-gray-700/50 rounded-xl p-4">
-            <p class="text-sm font-bold text-gray-800 dark:text-white">{{ Auth::user()->name ?? 'Admin User' }}</p>
-            <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">{{ Auth::user()->role ?? 'Administrator' }}</p>
-            <button
-                class="w-full bg-white dark:bg-gray-600 border dark:border-gray-500 text-emerald-700 dark:text-emerald-300 py-2 rounded-lg hover:bg-emerald-100 dark:hover:bg-gray-500 transition-colors">
-                Logout
-            </button>
+            <p class="text-sm font-bold text-gray-800 dark:text-white">
+                {{ Auth::user()->name ?? 'Admin User' }}
+            </p>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">
+                {{ Auth::user()->role ?? 'Administrator' }}
+            </p>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit"
+                    class="w-full bg-white dark:bg-gray-600 border dark:border-gray-500
+                        text-emerald-700 dark:text-emerald-300 py-2 rounded-lg
+                        hover:bg-emerald-100 dark:hover:bg-gray-500 transition-colors">
+                    Logout
+                </button>
+            </form>
         </div>
     </div>
+
 </aside>
